@@ -16,8 +16,17 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
+from home.views import home
+from products.views import all_products
+from auctions.views import all_auction
+from bids import urls as urls_bids
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include(urls_accounts))
+    url(r'^$', home, name="home"),
+    url(r'^accounts/', include(urls_accounts)),
+    url(r'^bids/', include(urls_bids)),
+    url(r'^products/', all_products, name="products"),
+    url(r'^auctions/', all_auction, name="auctions"),
+    
 ]

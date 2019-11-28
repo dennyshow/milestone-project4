@@ -8,7 +8,7 @@ from accounts.forms import UserLoginForm, UserRegistrationForm
 
 def index(request):
     #Return the index html file
-    return render(request, 'index.html')
+    return render(request, 'home.html')
 
 
 
@@ -17,7 +17,7 @@ def logout(request):
     #Log the user out
     auth.logout(request)
     messages.success(request, "You have successfuly been logged out")
-    return redirect(reverse('index'))
+    return redirect(reverse('home'))
   
   
     
@@ -25,7 +25,7 @@ def logout(request):
 def login(request):
     # Return a login page
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('home'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
         
@@ -38,7 +38,7 @@ def login(request):
                 auth.login(user=user, request=request)
                 
                 messages.success(request, "You have successfuly logged in!")
-                return redirect(reverse('index'))
+                return redirect(reverse('home'))
                 
             else:
                 login_form.add_error(None, "Your username of password is incorrect")
@@ -53,7 +53,7 @@ def registration(request):
     # Render the registration page
     
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('home'))
     
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
@@ -67,9 +67,9 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('index'))
+                return redirect(reverse('home'))
             else:
-                messages.erroe(request, "Unable to register your account at this time")
+                messages.error(request, "Unable to register your account at this time")
             
     else:
         registration_form = UserRegistrationForm()

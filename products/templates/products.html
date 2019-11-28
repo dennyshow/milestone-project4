@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 display panel panel-default ">
+            <div class="block">
+                 <div class="panel-body">
+                     <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product_image }}')"></div>
+                 
+                     <h3> {{ product.title }} </h3>
+                     <p> {{ product.details }} </p>
+                     <p> {{ product.history }} </p>
+                     <p> {{ product.artefact }} </p>
+                     <span> {{ product.posted_date }} </span>
+                     <form method="POST" action="/">
+                         {% csrf_token %}
+                         <div class="input-group">
+                             <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                             <span class="input-group-btn">
+                                      <button class="btn btn-success" type="submit">Bid</button>
+                                  </span>
+                         </div>
+                 
+                     </form>
+                 </div>
+                
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+   
+
+
+
+
+{% endblock %}
