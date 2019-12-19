@@ -15,28 +15,29 @@ def all_auctions(request):
     return render(request, "auction.html", {"auctions": auctions})
     
 
-def auction(request, product_id):
-    #To allow bid during auctions
+def auction(request, id):
+    #To allow bid a specified product in auctions
     
-    auction_bid = Auction.objects.filter(Auction, pk=product_id) if product_id else None
+    auction_bid = Auction.objects.get(Product, id=product_id)
+    
     if request.method=="GET":
         auction_bid.views += 1
-        auction_bid.save()
+        auction_bid.save(id)
         return redirect(reverse('bid'), auction_bid.product_id)
     else: 
         return render(request, 'auction.html', )
         
 
-def remain_time(auction):
-    time_left = auction.end_time - timezone.now()
-    days, seconds = time_left.days, time_left.seconds
-    hours = days * 24 + seconds // 3600
-    minutes = (seconds % 3600) // 60
-    seconds = seconds % 60
-    time_left = str(minutes) + "m " + str(seconds) + "s"
-    expired = days
+# def remain_time(auction):
+#     time_remaining = auction.end_time - timezone.now()
+#     days, seconds = time_remaining.days, time_remaining.seconds
+#     hours = days * 24 + seconds // 3600
+#     minutes = (seconds % 3600) // 60
+#     seconds = seconds % 60
+#     time_left = str(minutes) + "m " + str(seconds) + "s"
+#     expired = days
     
-    return time_left, expired
+#     return time_left, expired
     
 
         

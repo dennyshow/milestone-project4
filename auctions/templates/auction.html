@@ -10,7 +10,7 @@
             </div>
             <p> Start Bid: {{ auction.start_time }} </p>
             <p> End Bid: {{ auction.end_time }} </p>
-            <a href="/"><button class="btn btn-success">Bid Now</button> </a>
+            <button class="btn btn-success"><a href="{% url 'auctions' product.id %}">Bid Now</a></button>
         </div>
         {% endfor %}
     </div>

@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^bids/', all_bids, name="bids"),
     url(r'^products/', all_products, name="products"),
     url(r'^auctions/', include('auctions.urls')),
-    url(r'^auction/(?P<product_id>\d+)$', auction),
+    url(r'^auction/(?P<product_id>\d+)$/', auction, name="auction"),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
     
 ]
