@@ -10,22 +10,25 @@ from bids.models import Bid
 # Create your views here.
 
 def all_auctions(request):
+    print(all_auctions)
     # Create views for all auctions.
     auctions = Auction.objects.filter(end_time__lte=timezone.now()).order_by('end_time')
     return render(request, "auction.html", {"auctions": auctions})
     
 
 def auction(request, id):
+    print(id)
+    
     #To allow bid a specified product in auctions
     
     auction_bid = Auction.objects.get(Product, id=product_id)
     
-    if request.method=="GET":
+    if request.method=="POST":
         auction_bid.views += 1
         auction_bid.save(id)
         return redirect(reverse('bid'), auction_bid.product_id)
     else: 
-        return render(request, 'auction.html', )
+        return render(request, 'auction.html', {"auction_id":id})
         
 
 # def remain_time(auction):
