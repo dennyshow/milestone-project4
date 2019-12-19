@@ -36,7 +36,7 @@
             <li><a href="{% url 'products' %}">Products</a></li>
             
         {% if user.is_authenticated %}
-            <li><a href="/">Bids</a></li>
+            <li><a href="{% url 'bids' %}">Bids</a></li>
             <li><a href="">Profile</a></li>
             <form action="/" method="GET" class="navbar-form navbar-left"><div class="form-group"><input  type="text" class="form-control" name="q"></div>
                  <button type="search" class="btn btn-default">Search</button>

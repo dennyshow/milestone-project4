@@ -1,13 +1,17 @@
 from django.db import models
 from products.models import Product
-from datetime import datetime, timezone
+from django.utils import timezone
 
 # Create your models here.
 
 class Auction(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    bid_no = models.IntegerField()
-    start_time = models.DateTimeField(null=True, blank=True, default='timezone')
-    end_time = models.DateTimeField( auto_now_add=True, blank=True, default='timezone')
+    bid_no = models.IntegerField(default=1)
+    start_time = models.DateTimeField(auto_now_add=True)
+    end_time = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    auction_views = models.IntegerField(default=0)
     
+    
+    def __str__(self):
+        return "id=" + str(self.pk) + "product_id:" + str(self.product_id)
    

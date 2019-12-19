@@ -15,18 +15,26 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic import RedirectView
+from django.views.static import serve
 from accounts import urls as urls_accounts
-from home.views import home
+from home.views import home_view
 from products.views import all_products
-from auctions.views import all_auction
-from bids import urls as urls_bids
+from auctions.views import auction
+
+from bids.views import all_bids
+from .settings import MEDIA_ROOT
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home, name="home"),
+    url(r'^$', home_view, name="home"),
+    url(r'^home/', include('home.urls')),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'^bids/', include(urls_bids)),
+    url(r'^bids/', all_bids, name="bids"),
     url(r'^products/', all_products, name="products"),
-    url(r'^auctions/', all_auction, name="auctions"),
+    url(r'^auctions/', include('auctions.urls')),
+    url(r'^auction/(?P<product_id>\d+)$', auction),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
     
 ]

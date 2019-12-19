@@ -1,11 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 from auctions.models import Auction
-from datetime import datetime
+from django.utils import timezone
 
 # Create your models here.
 
 class Bid(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     auction_id = models.ForeignKey(Auction, on_delete=models.CASCADE)
-    bid_time = models.DateTimeField(auto_now_add=True, blank=True)
+    bid_time = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    bid_views = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return "user_id:" + str(self.user_id) + "auction_id:" + str(self.auction_id) + " " + str(self.bid_time)
+    

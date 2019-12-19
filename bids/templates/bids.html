@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        {% for bid in bids %}
+        <div class="col-md-4  display panel panel-default ">
+            <div class="block">
+            </div>
+               <p> User: {{ bid.user_id }} </p>
+               <p> Auction : {{ bid.auction_id }} </p>
+               <p> Bid Time: {{ bid.bid_time}} </p>
+            <a href="{% url 'bids'  %}"><button class="btn btn-success">Bid Now</button> </a>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}
