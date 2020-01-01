@@ -7,19 +7,21 @@
         <div class="col-md-4 display panel panel-default ">
             <div class="block">
                  <div class="panel-body">
-                     <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product_image }}')"></div>
+                     <div class="block product image">
+                       <img src="{{ MEDIA_URL }}{{ product.image }}">
+                    </div>
                  
                      <h3> {{ product.title }} </h3>
                      <p> {{ product.details }} </p>
                      <p> {{ product.history }} </p>
                      <p> {{ product.artefact }} </p>
                      <span> {{ product.posted_date }} </span>
-                     <form method="POST" action="/">
+                     <form method="POST" action="{% url 'add_to_basket' product.id %}">
                          {% csrf_token %}
                          <div class="input-group">
                              <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
                              <span class="input-group-btn">
-                                      <button class="btn btn-success" type="submit">Bid</button>
+                                      <button class="btn btn-success" type="submit">Buy Now</button>
                                   </span>
                          </div>
                  

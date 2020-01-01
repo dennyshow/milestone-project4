@@ -5,14 +5,26 @@
     <div class="row">
         {% for auction in auctions %}
         <div class="col-md-4  display panel panel-default ">
-            <div class="block">
+            <div class="image">
+                <div class=" block">
+                <img src="{{ MEDIA_URL }}{{ auction.product_id.image }}">
+               
+            </div>
     
             </div>
             <p> Start Bid: {{ auction.start_time }} </p>
-            <p> End Bid: {{ auction.end_time }} </p>
-            <form method="POST">
-                <button class="btn btn-success"><a href="{% url 'auctions' product.id %}">Bid Now</a></button>
-            </form>
+            <p> Bid No: {{ auction.bid_no }}</p>
+            <p>Views: {{ auction.auction_views }}</p>
+          
+         <form methods="GET" actions="/">
+            <div class="input-group">
+                <input name="Raise" type="number" min="10" max="9999" class="form-control" placeholder="Raise">
+                <a href="{% url 'auction' auction.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Place Bid</a>
+            </div>
+         </form>
+
+         
+       
         </div>
         {% endfor %}
     </div>

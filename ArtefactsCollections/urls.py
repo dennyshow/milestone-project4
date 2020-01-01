@@ -16,25 +16,38 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import RedirectView
-from django.views.static import serve
+from django.views import static
 from accounts import urls as urls_accounts
+from home import urls as urls_home
+from products import urls as urls_products
+from auctions import urls as urls_auctions
+from bids import urls as urls_bids
+from search import urls as urls_search
+from checkout import urls as urls_checkout
+from basket import urls as urls_basket
+
+
+
 from home.views import home_view
 from products.views import all_products
-from auctions.views import auction
 
 from bids.views import all_bids
 from .settings import MEDIA_ROOT
 
 
 urlpatterns = [
+    
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_view, name="home"),
     url(r'^home/', include('home.urls')),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'^bids/', all_bids, name="bids"),
+    url(r'bids', all_bids, name="bids"),
+    url(r'bids/', include('bids.urls')),
+    url(r'basket/', include('basket.urls')),
     url(r'^products/', all_products, name="products"),
+    url(r'^search/', include('search.urls')),
+    url(r'checkout/', include('checkout.urls')),
     url(r'^auctions/', include('auctions.urls')),
-    url(r'^auction/(?P<product_id>\d+)$/', auction, name="auction"),
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
     
 ]

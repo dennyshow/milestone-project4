@@ -1,46 +1,49 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import datetime, timedelta
 from .models import Auction
-from .forms import AuctionForm
-from products.models import Product
-from bids.models import Bid
+from auctions.auction import to_auction
 
-# Create your views here.
+
 
 def all_auctions(request):
-    print(all_auctions)
+    
     # Create views for all auctions.
     auctions = Auction.objects.filter(end_time__lte=timezone.now()).order_by('end_time')
     return render(request, "auction.html", {"auctions": auctions})
-    
 
-def auction(request, id):
-    print(id)
+
+ 
+def auction_bid(request, product_id):
     
     #To allow bid a specified product in auctions
     
-    auction_bid = Auction.objects.get(Product, id=product_id)
+    auction = Auction.objects.filter(product_id=product_id)
     
-    if request.method=="POST":
-        auction_bid.views += 1
-        auction_bid.save(id)
-        return redirect(reverse('bid'), auction_bid.product_id)
-    else: 
-        return render(request, 'auction.html', {"auction_id":id})
+    if request.user.is_authenticated:
+        return redirect(reverse("auctions"))
         
-
-# def remain_time(auction):
-#     time_remaining = auction.end_time - timezone.now()
-#     days, seconds = time_remaining.days, time_remaining.seconds
-#     hours = days * 24 + seconds // 3600
-#     minutes = (seconds % 3600) // 60
-#     seconds = seconds % 60
-#     time_left = str(minutes) + "m " + str(seconds) + "s"
-#     expired = days
+        if request.method=="GET":
+            new_auction = to_auction(Product)
+            new_auction = timezone.now()
+            new_auction = auction_views =+ 1
+            new_auction.save()
+            
+            print(new_auction)
+            
+       
+            return redirect(reverse('new_auction'), new_auction.product_id, {"new_auction": auction})
+            
+        else: 
+            return render(request, 'auction.html', {"id":product_id})
     
-#     return time_left, expired
+    else:
+        messages.error(request, "Please Sign In To BID!")
+        return redirect(reverse('auctions'))
+        
+        
     
 
         

@@ -4,20 +4,28 @@
 
 
     <div class="row">
-        {% for hi in home %}
+        {% for h in home %}
         <div class="col-md-4  display panel panel-default ">
-            <div class="block">
+            <div class="block image">
+               <img src="{{ MEDIA_URL }}{{ h.image }}">
+            </div>
             
-                
-            </div>
             <div>
-                <p></p>
+                <p>Last Bid: {{ h.bid_id }}</p>
+                <p>Time Left: {{ h.user_id }}</p>
                 <p></p>
             </div>
+            
+            <form method="POST" action="{% url 'bid_from_home' home.id %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input name="auction_id" type="text" min="10" max="9999" class="form-control" placeholder="Amount">
+                    <span class="input-group-btn"><button class="btn btn-success">Bid</button></span>
+                </div>
+            </form>
            
             
             
-            <button class="btn btn-success"><a href="">Bid</a></button>
         </div>
         {% endfor %}
     </div>

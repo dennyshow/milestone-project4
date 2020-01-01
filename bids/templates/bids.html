@@ -1,20 +1,27 @@
 {% extends 'base.html' %}
+{% load customs %}
 
 {% block content %}
-
-    <div class="row">
-        {% for bid in bids %}
-        <div class="col-md-4  display panel panel-default ">
-            <div class="block">
-            </div>
-               <p> User: {{ bid.user_id }} </p>
-               <p> Auction : {{ bid.auction_id }} </p>
-               <p> Bid Time: {{ bid.bid_time}} </p>
-            <a href="{% url 'bids'  %}"><button class="btn btn-success">Bid Now</button> </a>
+<div class="row">
+    {% for bid in bids %}
+    <div class="col-xs-6 ">
+    <div class="block">
+        <div class="image">
+            <img src="{{ MEDIA_URL }} ">
+                <form method="POST" action="bid"  method="GET">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input name="Raise" type="number" min="10" max="9999" class="form-control" placeholder="Raise">
+                        <span class="input-group-btn"><button class="btn btn-success">Bid Now</button></span>
+                    </div>
+                </form>
+  
         </div>
-        {% endfor %}
     </div>
-
+</div>
+    
+    {% endfor %}
+</div>
 
 
 {% endblock %}
