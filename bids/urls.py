@@ -1,8 +1,8 @@
 from django.conf.urls import url
-from .views import all_bids, bid
+from .views import all_bids, bid_page
 
 urlpatterns = [
-    url(r'^$', all_bids, name="bids"),
-    url(r'^bids/bid/(<auction_id>d+)/', bid, name='bid'),
+    url(r'^(?P<pk>\d+)', all_bids, name="bids"),
+    url(r'^bid/(?P<auction_id>\d+)', bid_page, name='bid'),
     
     ]

@@ -5,7 +5,7 @@ from products.models import Product
 # Create your models here.
 
 class Page(models.Model):
-    product_id = models.ForeignKey(Product, null=False, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     image = models.ImageField(upload_to="images")
     

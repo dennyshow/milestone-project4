@@ -5,27 +5,29 @@ from .models import Bid
 from auctions.models import Auction
 from django.utils import timezone
 from datetime import datetime, timedelta
-from auctions.auction import to_auction
+
 
 
 
 # Create your views here.
 
-def all_bids(request):
-    print(all_bids)
+def all_bids(request, product_id):
     # display all current and expired bids
-    bids = Bid.objects.all()
-    return render(request, "bids.html", {"bids": bids})
+    bids = Bid.objects.filter(pk=product_id)
+    return render(request, bids.pk, "bids.html", {"bids": bids})
+    
+    
 
     
 
-def bid(request, auction_id):
+
+def bid_page(request, auction_id):
     # return a bid page when auctionn is won
    
     
     let_bid = Auction.objects.filter(auction_id=auction_id)
     if let_bid[0].start_time > timezone.now():
-        return redirect(reverse('bid'), let_bid.auction_id, {"let_bid": let_bid[0] })
+        return redirect(reverse('bids'))
     
     
     collect_bid = []
@@ -51,7 +53,7 @@ def bid(request, auction_id):
     else:
         collect_bid.append(None)
     
-    return render(request, "bid.html", {"collect_bid": collect_bid})
+    return render(request, "bid.html", {"let_bid": let_bid[0], "collect_bid": collect_bid})
     
     
 

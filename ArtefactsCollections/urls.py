@@ -23,7 +23,6 @@ from products import urls as urls_products
 from auctions import urls as urls_auctions
 from bids import urls as urls_bids
 from search import urls as urls_search
-from checkout import urls as urls_checkout
 from basket import urls as urls_basket
 
 
@@ -41,12 +40,11 @@ urlpatterns = [
     url(r'^$', home_view, name="home"),
     url(r'^home/', include('home.urls')),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'bids', all_bids, name="bids"),
+    url(r'^bids/', all_bids, name="all_bids"),
     url(r'bids/', include('bids.urls')),
     url(r'basket/', include('basket.urls')),
     url(r'^products/', all_products, name="products"),
     url(r'^search/', include('search.urls')),
-    url(r'checkout/', include('checkout.urls')),
     url(r'^auctions/', include('auctions.urls')),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
     
