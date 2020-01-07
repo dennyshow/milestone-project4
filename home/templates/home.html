@@ -4,25 +4,25 @@
 
 
 <div class="row">
-    {% for p in home %}
-    <div class="col-md-3  display panel panel-default ">
+    {% for h in home %}
+    <div class="col-xs-4 col-sm-4 col-md-4  display panel panel-default ">
 
         <div class="block">
 
             <div class="panel-body">
-                <div class=" image image">
-                    <img src="{{ MEDIA_URL }}{{ p.product_id.image }}">
+                <div class="image">
+                    <img src="{{ MEDIA_URL }}{{ h.product_id.image }}">
                 </div>
 
 
                 <div>
-                    <p>Artefact Name: {{ p.product_id.title }}</p>
-                    <p>Artefact Description: {{ p.product_id.details }}</p>
-                    <p>Artefact Category: {{ p.product_id.artefact }}</p>
-                    <p>Buy Now: {{ p.product_id.price }}€</p>
+                    <p>Artefact Name: {{ h.product_id.title }}</p>
+                    <p>Artefact Description: {{ h.product_id.details }}</p>
+                    <p>Artefact Category: {{ h.product_id.artefact }}</p>
+                    <p>Buy Now: {{ h.product_id.price }}€</p>
                 </div>
 
-                <form method="POST" action="{% url 'bid_from_home' auction.id %}" method="POST">
+                <form method="POST" action="{% url 'bid_from_home' h.id %}" method="POST">
                     {% csrf_token %}
                     <div class="input-group">
                         <input name="/" type="text" min="10" max="9999" class="form-control" placeholder="Place Bid">

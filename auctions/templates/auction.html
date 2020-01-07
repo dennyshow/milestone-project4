@@ -2,23 +2,27 @@
 
 {% block content %}
 
-    <div class="row">
-        {% for auction in auctions %}
-        <div class="col-md-4  display panel panel-default ">
-            <div class="image">
-                <div class=" block">
-               <img src="{{ MEDIA_URL }}{{ auction.product_id.image }}">
-               
-            </div>
-    
-            </div>
-            <p> Start Bid: {{ auction.start_time }} </p>
-            <p> Bid No: {{ auction.bid_no }}</p>
-            <p>Views: {{ auction.auction_views }}</p>
-             
-        
-        
-            <form method="POST" action="{% url 'auction' auction.id %}" method="GET">
+
+<div class="row">
+    {% for auction in auctions %}
+    <div class="col-md-4  display panel panel-default ">
+
+        <div class="block">
+
+            <div class="panel-body">
+                <div class="image">
+                    <img src="{{ MEDIA_URL }}{{ auction.product_id.image }}">
+                </div>
+
+                <div>
+                    <p>Artefact: {{ auction.product_id.title }}</p>
+                    <p>Description: {{ auction.product_id.details }}</p>
+                    <p> Date Posted: {{ auction.posted_date }} </p>
+                    <p> Start: {{ auction.start_time }}</p>
+                    <p> End: {{ auction.end_time }}</p>
+                </div>
+
+            <form method="POST" action="{% url 'one_auction' auction.id  %}" method="GET">
                 {% csrf_token %}
                 <div class="input-group">
                     <input name="Raise" type="number" min="10" max="9999" class="form-control" placeholder="Raise">
@@ -26,12 +30,17 @@
                 </div>
             </form>
 
-         
-       
-        </div>
-        {% endfor %}
-    </div>
+            </div>
 
+
+        </div>
+
+
+
+
+    </div>
+    {% endfor %}
+</div>
 
 
 {% endblock %}

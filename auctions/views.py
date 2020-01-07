@@ -13,32 +13,56 @@ from bids.models import Bid
 def all_auctions(request):
     
     # Create views for all auctions.
-    auctions = Auction.objects.filter(end_time__lte=timezone.now()).order_by('end_time')
+    auctions = Auction.objects.filter()
     return render(request, "auction.html", {"auctions": auctions})
+    
+    
+
+def one_auction(request, id):
+    # Allow user to auction a product
+    
+    try:
+        if request.method == "GET":
+            if request.user.is_authenticated:
+                auction_bid = get_object_or_404(Bid, id=id)
+                auction_bid = timezone.now()
+                auction_bid.bid_views += 1
+                auction_bid.save()
+                return redirect(reverse('auction'), auction_bid.id, {"auction_bid": auction_bid})
+            else:
+                messages.error(request, "Bid is not possible, please log in")
+        
+        else:
+            return render(request, "auction.html")
+    
+    except ValueError:
+        return Auction
+        
+                
 
 
  
-def auction_bid(request, product_id):
+# def auction_bid(request, product_id):
     
-    #To allow bid a specified product in auctions
+#     #To allow bid a specified product in auctions
     
-    auction = Auction.objects.filter(product_id=product_id)
+#     auction = Auction.objects.filter(product_id=product_id)
     
-    if request.user.is_authenticated:
-        return redirect(reverse("auctions"))
+#     if request.user.is_authenticated:
+#         return redirect(reverse("auctions"))
         
-        if request.method=="get":
-            auction = auction(Bid)
-            auction.auction_views += 1
-            auction.save()
-            return redirect(reverse('auction'), auction.product_id, {"auction": auction})
+#         if request.method=="get":
+#             auction = auction(Bid)
+#             auction.auction_views += 1
+#             auction.save()
+#             return redirect(reverse('auction'), auction.product_id, {"auction": auction})
             
-        else: 
-            return render(request, 'auction.html', {"id":product_id})
+#         else: 
+#             return render(request, 'auction.html', {"id":product_id})
     
-    else:
-        messages.error(request, "Please log in to proceed")
-        return redirect(reverse('auctions'))
+#     else:
+#         messages.error(request, "Please log in to proceed")
+#         return redirect(reverse('auctions'))
         
         
     

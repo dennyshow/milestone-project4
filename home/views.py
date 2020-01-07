@@ -13,42 +13,37 @@ def home_view(request):
     return render(request, "home.html", {"home": home})
     
     
+    
 
-def bid_from_home(request, auction_id):
-    if request.user.is_authenticated:
-        return redirect(reverse('auctions'))
+def bid_from_home(request, pk):
+    # view that allows user to bid from home page if authenticated.
+    
+    try:
         
         if request.method == "POST":
-            to_bid = get_object_or_404(Auction, pk=auction_id)
-            to_bid = timezone.now()
-            to_bid.bid_views += 1
-            to_bid.save()
-            return redirect(reverse('auctions'), to_bid.auction_id, {"to_bid": to_bid})
-       
-    else:
-        messages.error(request, "Please register or sign in to bid!")
-    
-    return redirect(reverse('auctions'))
+            if request.user.is_authenticated:
+                to_bid = get_object_or_404(Auction, pk=pk)
+                to_bid = timezone.now()
+                to_bid.bid_no += 1
+                to_bid.save()
+                return redirect(reverse('bids'), to_bid.pk, {"to_bid": to_bid})
+            else:
+                messages.error(request, "Please register or sign in to bid!")
             
+        else:
+            messages.error(request, "Please Log in")
     
-    
-# def bid_from_home(request, product_id):
-    
-#     if request.user.is_authenticated:
-#         return redirect(reverse('products'))
+        return redirect(reverse('home'))
         
-#         if request.method == "POST":
-#             allow_bid = get_object_or_404(Auction, pk=product_id)
-#             allow_bid = timezone.now()
-#             allow_bid.save()
-#             return redirect(reverse("products"), allow_bid.product_id, {"allow_bid": allow_bid})
-#     else:
-#         messages.error(request, "Please register or sign in to bid")
+    except ValueError:
+        return redirect(reverse('auctions'))
         
-#     return redirect(reverse('home'))
+    
+   
+        
     
     
-    
+            
     
     
 
