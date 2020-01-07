@@ -6,10 +6,10 @@ from datetime import datetime
 class Product(models.Model):
     ARTEFACTS = (
         
-        ('HIS', 'Historical'),
-        ('CUL', 'Cultural'),
-        ('REL', 'Religious'),
-        ('MED', 'Media'),
+        ('HISTO', 'Historical'),
+        ('CULTU', 'Cultural'),
+        ('RELIG', 'Religious'),
+        ('MEDIA', 'Media'),
     )
     
     title = models.CharField(max_length=255, default='')
@@ -17,8 +17,8 @@ class Product(models.Model):
     details = models.CharField(max_length=255)
     history = models.TextField()
     quantity = models.IntegerField()
-    artefact = models.CharField(max_length=3, choices=ARTEFACTS)
-    posted_date = models.DateTimeField(blank=True, null=True)
+    artefact = models.CharField(max_length=5, choices=ARTEFACTS)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
     
     def __str__(self):
         return "(" + self.title + ", " + self.details + ", " + self.history + ", " + self.artefact + ")"

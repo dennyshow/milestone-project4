@@ -15,19 +15,7 @@
             <p> Start Bid: {{ auction.start_time }} </p>
             <p> Bid No: {{ auction.bid_no }}</p>
             <p>Views: {{ auction.auction_views }}</p>
-             <table class="table borderless-table">
-                <tbody>
-                    <tr>
-                        {% if collect.1 %}
-                        <td><small>Time left:</small></td>
-                        <td>{{ collect.0 }}</td>
-                        {% else %}
-                        <p>{{ auction.end_time }} </p>
-                        {% endif %}
-
-                    </tr>
-                </tbody>
-            </table>
+             
         
         
             <form method="POST" action="{% url 'auction' auction.id %}" method="GET">

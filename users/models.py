@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    balance = models.DecimalField(max_digits=6, decimal_places=2)
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     

@@ -3,32 +3,44 @@
 {% block content %}
 
 
-    <div class="row">
-        {% for h in home %}
-        <div class="col-md-4  display panel panel-default ">
-            <div class="block image">
-               <img src="{{ MEDIA_URL }}{{ h.image }}">
-            </div>
-            
-            <div>
-                <p>Last Bid: {{ h. }}</p>
-                <p>Time Left: {{ h. }}</p>
-                <p></p>
-            </div>
-            
-            <form method="POST" action="{% url 'bid_from_home' home.id %}" method="POST">
-                {% csrf_token %}
-                <div class="input-group">
-                    <input name="auction_id" type="text" min="10" max="9999" class="form-control" placeholder="Amount">
-                    <span class="input-group-btn"><button class="btn btn-success">Bid</button></span>
+<div class="row">
+    {% for p in home %}
+    <div class="col-md-3  display panel panel-default ">
+
+        <div class="block">
+
+            <div class="panel-body">
+                <div class=" image image">
+                    <img src="{{ MEDIA_URL }}{{ p.product_id.image }}">
                 </div>
-            </form>
-           
-            
-            
+
+
+                <div>
+                    <p>Artefact Name: {{ p.product_id.title }}</p>
+                    <p>Artefact Description: {{ p.product_id.details }}</p>
+                    <p>Artefact Category: {{ p.product_id.artefact }}</p>
+                    <p>Buy Now: {{ p.product_id.price }}€</p>
+                </div>
+
+                <form method="POST" action="{% url 'bid_from_home' auction.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input name="/" type="text" min="10" max="9999" class="form-control" placeholder="Place Bid">
+                        <span class="input-group-btn"><button class="btn btn-success">Bid</button></span>
+                    </div>
+                </form>
+
+            </div>
+
+
         </div>
-        {% endfor %}
+
+
+
+
     </div>
+    {% endfor %}
+</div>
 
 
 {% endblock %}
