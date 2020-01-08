@@ -15,25 +15,26 @@ def home_view(request):
     
     
 
-def bid_from_home(request, pk):
+def bid_from_home(request, id):
     # view that allows user to bid from home page if authenticated.
     
     try:
         
         if request.method == "POST":
+            
             if request.user.is_authenticated:
-                to_bid = get_object_or_404(Auction, pk=pk)
+                to_bid = get_object_or_404(Auction, id=id)
                 to_bid = timezone.now()
                 to_bid.bid_no += 1
                 to_bid.save()
-                return redirect(reverse('bids'), to_bid.pk, {"to_bid": to_bid})
+                return redirect(reverse('auctions'), to_bid.id, {"to_bid": to_bid})
             else:
                 messages.error(request, "Please register or sign in to bid!")
             
         else:
-            messages.error(request, "Please Log in")
-    
-        return redirect(reverse('home'))
+            return render(request, "home.html")
+            
+        return redirect(reverse('auctions'))
         
     except ValueError:
         return redirect(reverse('auctions'))

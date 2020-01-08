@@ -22,7 +22,7 @@
                     <p>Buy Now: {{ h.product_id.price }}€</p>
                 </div>
 
-                <form method="POST" action="{% url 'bid_from_home' h.id %}" method="POST">
+                <form action="{% url 'bid_from_home' h.id %}" method="POST">
                     {% csrf_token %}
                     <div class="input-group">
                         <input name="/" type="text" min="10" max="9999" class="form-control" placeholder="Place Bid">

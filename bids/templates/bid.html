@@ -3,4 +3,57 @@
 
 {% block content %}
 
+
+<div class="row">
+{% for b in bid %}
+
+<div class="col-xs-6 col-sm-6 col-md-6  display panel panel-default ">
+    <div class="panel-body">
+        <div class="image">
+            <p>{{ b.product_id.title }}</p>
+            <img src="{{ MEDIA_URL }}{{ b.product_id.image }}">
+        </div>
+    </div>
+</div>
+        
+
+        <div class=" col-xs-6 col-sm-6 col-md-6 bid-detail">
+
+                <div>
+                    
+                    <p>Artefact Description: {{ b.product_id.details }}</p>
+                    <p>Artefact Category: {{ b.product_id.artefact }}</p>
+                    <p>Buy Now: {{ b.product_id.price }}€</p>
+                </div>
+
+                <form action="{% url 'bid_from_home' h.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input name="/" type="text" min="10" max="9999" class="form-control" placeholder="Place Bid">
+                        <span class="input-group-btn"><button class="btn btn-success">Bid</button></span>
+                    </div>
+                </form>
+
+            </div>
+            
+        <div class="col-md-10">
+            
+            <p>Description: {{ b.product_id.details }}</p>
+            <p>History: {{ b.product_id.history }}</p>
+            
+        </div>
+
+
+        </div>
+
+
+
+
+    {% endfor %}
+</div>
+
+
+
+
+
 {% endblock %}

@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import datetime, timedelta
 from .models import Auction
-from django.contrib import messages
 from products.models import Product
-from bids.views import bid_page
 from bids.models import Bid
 
 # Create your views here.
@@ -22,21 +21,24 @@ def one_auction(request, id):
     # Allow user to auction a product
     
     try:
+        
         if request.method == "GET":
-            if request.user.is_authenticated:
-                auction_bid = get_object_or_404(Bid, id=id)
+            
+                auction_bid = Bid.objects.filter(id=id)
                 auction_bid = timezone.now()
                 auction_bid.bid_views += 1
                 auction_bid.save()
-                return redirect(reverse('auction'), auction_bid.id, {"auction_bid": auction_bid})
-            else:
-                messages.error(request, "Bid is not possible, please log in")
+                
+                new_bid = auction_bid
+                new_bid.append(auction_bid)
+                return redirect(reverse('bid'), auction_bid.id, {"auction_bid": auction_bid, "{new_bid": new_bid})
         
         else:
-            return render(request, "auction.html")
+            new_bid.delete(auction_bid)
+        return redirect(reverse('bid'))
     
     except ValueError:
-        return Auction
+        return redirect(reverse('home'))
         
                 
 

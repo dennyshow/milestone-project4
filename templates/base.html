@@ -32,11 +32,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'auctions' %}">Auction</a></li>
                 <li><a href="{% url 'products' %}">Products</a></li>
 
                 {% if user.is_authenticated %}
-                <li><a href="bids">Bids</a></li>
+                 <li><a href="{% url 'auctions' %}">Auction</a></li>
+                <li><a href="{% url 'bid' %}">Bid</a></li>
                 <li><a href="">Profile</a></li>
 
                 <form action="search" method="GET" class="navbar-form navbar-left">
