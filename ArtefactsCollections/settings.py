@@ -28,7 +28,7 @@ SECRET_KEY = '%5eb(f$&wufnauo%1f+rw4uw)p$!1ystqpay)vhz^8fp7zw)%a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [("5335d542570144bd97c74b279d2e3130.vfs.cloud9.us-east-1.amazonaws.com")]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -149,9 +149,8 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 AWS_STORAGE_BUCKET_NAME = 'denny-auctionsite'
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-# AWS_ACCESS_KEY_ID = "AKIAIMZ24JIBAA4MDLXQ"
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-# AWS_SECRET_ACCESS_KEY = "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"
+
 
 AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
@@ -159,7 +158,7 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -179,4 +178,4 @@ STRIPE_SECRET = os.getenv("STRIPE_SECRET")
 
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-django_heroku.settings(locals())
+

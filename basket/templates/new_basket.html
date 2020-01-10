@@ -2,7 +2,9 @@
 
 
 {% block content %}
+          <!-- HEADER -->
     <h2>Buy for €500.00</h2>
+          <!-- FORM FOR STRIPE CHARGE -->
     <form action="{% url 'charge' %}" method="post">
       {% csrf_token %}
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -13,4 +15,5 @@
           
       </script>
     </form>
+          <!-- FORM END -->
 {% endblock %}

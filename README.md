@@ -22,10 +22,13 @@ I have decided to follow the project requirements provided in brief.
 The UX for this project is easy and understandable. It is mainly an ecommerce web based application that functions perfectly. 
 Navigations are quite easy and smooth for users. The application is intuitive to use and has information on it presented well.
 There is a search input box that allows user to narrow/navigate thier search through the application. 
-The web application allows user to create, read(view), edit(update) and make payment without any interferenc.
+The web application allows user to create, read(view), edit(update) and make payment without any interference.
 
-The data schema used displays perfectly throughout the form thus allowing user to implement the CRUD rule perfectly. 
-The images used are stored in a static folder
+As a user I want to be able to buy or get an expensive artefacts at an affordable price.
+
+The data schema used throughout the form/submit implement some of the CRUD rule perfectly. 
+The images used are are stored in a S3 Bucket to display correctly across every web platform.
+
 The colour scheme was very simple and makes the site quite clear and readable enough for users.
 Fonts sizes are also considered for good readability.
 The site also has some interactivity functions but minimal.
@@ -36,6 +39,8 @@ This application is very easy for a user to manipulate and understand.
 
 * Navbar - Materialize was used for quick production of modern CSS and use of their predefinded classes.
 
+* Alert Messages - Used to inform user of interaction on the app. 
+
 * Images - Flask werkzeug was used to allow user attach image files. Images used are acquired via google.
 
 * Button - Was used to allow users actions on application.
@@ -44,7 +49,7 @@ This application is very easy for a user to manipulate and understand.
 
 * Forms/Search Bar - Bootstrap and Django Forms was helpful and usable in Jinja templates to allow app functions.
 
-* Wireframing- I just did some mock ups on balsamiq of how the site generally should look and feel. 
+* Wireframing- I just did some mock ups on balsamiq of how the site generally should look and feel. and I attach this to each html as a png file.
 
 
 ### Possible feature to implement 
@@ -64,59 +69,63 @@ The site is fully functional without any local files needed to be downloaded all
 used are loaded via an approved CDN. Before deployment the site was tested on several browsers and devices.
 This site is supported on all browsers. Check below for tested devices and browsers.
 
-# [Live Demo Here](https://diy-cookery.herokuapp.com/)
+# [Live Demo Here](https://denny-auctionsite.herokuapp.com/home/)
 
 ### External sites used 
 
-* [Materialize 0.100.2](https://materializecss.com/) - The web framework used 
+* [Bootstrap](https://getbootstrap.com/) - The web framework used 
 * [W3 Schools](https://www.w3schools.com/html/default.asp) - Help & tips 
 * [Stackoverflow](https://stackoverflow.com/) - Help & tips
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/) -Help & tips
-* [Material Icon](https://material.io/) - Icons 
-* [Favicons](https://favicon.io/) - Icons
+* [Django](https://www.djangoproject.com/) -Help & tips
+* [Fontawesome](https://favicon.io/) - Fontawesome
 * [Colors](https://coolors.co/) - Colours
-* [Materialize JS](http://archives.materializecss.com/0.100.2/getting-started.html) - Materialize JS
+* [Stripe JS](hhttps://stripe.com/ie) - Stripe JS
 
-### Frameworks used 
+### Frameworks/API used 
 
 * [Materialize 0.100.2](https://materializecss.com/)
-* [Material Icon](https://material.io/)
 * [JQuery 3.2.1](https://jquery.com/download/)
-* [Flask](https://flask.palletsprojects.com)
+* [Stripe](https://stripe.com/ie)
+* [Django](https://www.djangoproject.com/)
 
 
 ## Custom Fonts 
 
-I used fonts from **@googleapis CSS 'Cormorant+Upright, Nurino'** to create difference in headers, paragraph, span and written styles.
+I used fonts from **@googleapis CSS 'Cormorant+Upright, Muli, Nunito'** to create difference in headers, paragraph, span and written styles.
 
 ## Technologies used
 
 
 * JQuery & JavaScript - Was used to allow interactivity, file attachment and buttons to function smoothly. [Jquery](https://jquery.com/)
 
-* Sqlite3 - SQLite3 was used to create database and pulled via the backend. [MongoDB](https://www.mongodb.com/)
+* Sqlite3 - SQLite3 was used to create database and pulled via the backend. [SQLite3](https://www.sqlite.org/)
 
 * Python - Was used to route and call backend database schema from MongoDB.[Python](Lecture Notes)
 
-* Django - Produces very useful packages like Auth, Admin Jinja, Bootstrap Forms,  that allows application to be more functional.[Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* Django - Produces very useful packages like Auth, Admin Jinja, Bootstrap Forms,  that allows application to be more functional.[Django](https://www.djangoproject.com/)
 
-* AWS3 BUCKET - Using amazon cloud based server to store images and static files.
+* AWS3 BUCKET - Using amazon cloud based server to store images and static files.[Amazon](https://aws.amazon.com/s3/)
 
-* AWS3 IAM - Using to store images and static folders.
+* AWS3 IAM - Used to manage access to our S3.[Amazon](https://aws.amazon.com/iam/)
 
 * Heroku - Was used to deploy application to run on any every technological devices. [Heroku](https://heroku.com/)
 
-* Stripe JS - For easy payment when user select paynow option on all screen sizes [Materialize](http://archives.materializecss.com/0.100.2/getting-started.html)
+* Stripe JS - For easy payment when user select paynow option on all screen sizes [Stripe](https://stripe.com/ie)
 
-* Fontawesome - Used to improve UX when viewing the top of the webpage. [Favicon-generator](https://favicon.io/favicon-generator/)
+* Fontawesome - Used to improve UX when viewing the top of the webpage. [Fontawesome](https://fontawesome.com/)
 
-* Bootstrap Classes - To trigger more styles and reduce CSS over-styling [Materialize](http://archives.materializecss.com/0.100.2/)
+* Bootstrap Classes - To trigger more styles and reduce CSS over-styling [Bootstrap](https://getbootstrap.com/)
 
-* Font awesome Icon - To improve view of UX when surfing the application [Material Icon](https://material.io/)
+* Travis - To test build of website and check if all test are passing [Travis](https://travis-ci.org/)
+
 
 
 
 ## Testing
+
+### Travis Testing
+
+Was done through github repositories
 
 + Tested on **Chrome** (Tested in DevOps on all mobile and tablet devices possible for testing.)
 + Tested on **IE**
@@ -274,7 +283,25 @@ Then we go into the created bucket **Permissions** and click into **CORS configu
 All that is needed is just to write the default code and save the config.
 
 Then we go into the **bucket policy** to allows access to the contents across all web 
-and inside this we will put in here some code including  arn displayed at the 
+and inside this we will put in here some code including  arn address displayed at the top of the heading.
+Then we go into amazon **IAM** to allow identity and access management of our stored files and folder.
+In the **IAM** service, we add a new group for our application and then we set the policies to **ALL**
+
+This then allows us to into our terminal window and install some settings
+**Boto3**
+**Django Storages**
+
+The **Django Storages** is passed into the installed apps in settings. And once everything looks fine we can **collectstatic**
+And your folder and files should display in your ***AWS3 BUCKETS**
+
+Then we have our added images displaying on any webserve.
+
+
+
+### GitHub Deployment
+
+Created a new repositories on **Github** where the project will be deployed unto at each commit.
+At first, use a **git remote** command to link project with new repo.
 Then use the **git push -u origin master** command to push codes and every change into new repo
 
 Using the CLI in terminal to call **git init** to start git initialization on the project.
@@ -282,6 +309,7 @@ This allows a file/files to be added to the Github repo by calling a **git add**
 Then any added file/files is being commited with a **git commit -m "commit message"** command.
 Afterwards, the file is been pushed with **git push** where Github username + password is required.
 Once successful, code will be deployed into your repo and **git status** command should indicate branch tree clean.
+
 
 
 ### Heroku Deployment
@@ -312,8 +340,8 @@ All my routing, views and urls is **Django valid**
 
 #### Version Used
 
-I use [GitHub](github.com) for version control. Which backup my code incase I encounter a bug or an error that needs urgent fix. 
-I can easily traceback my code on GitHub.
+I use [GitHub](github.com) for version control. Which backup my code incase I encounter a bug or an error that needs urgent fix or restoration. 
+I can easily traceback my code on GitHub to changes applied and versions updates.
 
 
 ### Authors
@@ -337,6 +365,7 @@ I received a great inspiration for this project via my mentor, tutors, and slack
 * Michael(Tutor)
 * Stephen(Tutor)
 * Chris(Mentor)
+* Friends
 
 
 

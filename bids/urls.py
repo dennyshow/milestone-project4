@@ -3,6 +3,5 @@ from .views import all_bids
 
 urlpatterns = [
     url(r'', all_bids, name="bid"),
-   
-    
+  
     ]

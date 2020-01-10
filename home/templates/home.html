@@ -5,6 +5,8 @@
 
 <div class="row">
     
+            <!-- FOR LOOPS HOMEPAGE -->
+    
     {% for h in home %}
     <div class=" col-md-6  display panel panel-default ">
 
@@ -21,11 +23,12 @@
                     <p>Artefact Name: <span>{{ h.product_id.title }}</span></p>
                     <p>Artefact Description: <span>{{ h.product_id.details }}</span></p>
                     <p>Artefact Category: <span>{{ h.product_id.artefact }}</span></p>
-                    <p>Artefact Price: <span>{{ h.product_id.auction_price }}</span></p>
+                    <p>Auction Price: <span> €  {{ h.product_id.auction_price }}</span></p>
                     <!--<p>Last Bid: {{ h.product_id.price }}€</p>-->
                 </div>
                 
                 <div class="bid-height">
+                        <!-- FORMS TO ALLOW BIDDING FROM HOMEPAGE -->
                     
                 <form action="{% url 'bid_from_home'  %}" method="POST">
                     {% csrf_token %}
@@ -35,6 +38,8 @@
                         <span class="input-group-btn"><button class="btn btn-success">Bid</button></span>
                     </div>
                 </form>
+                
+                        <!-- FORM END -->
                 
             </div>
 
@@ -48,6 +53,8 @@
 
     </div>
     {% endfor %}
+    
+                <!-- FOR LOOPS END -->
 </div>
 
 

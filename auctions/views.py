@@ -28,7 +28,7 @@ def one_auction(request):
                 product.auction_price += int(request.POST['Raise'])
                 product.save()
                 new_bid = Bid()
-                # auction = get_object_or_404(Auction, pk=pk)
+                
                 new_bid.product_id = product
                 new_bid.auction_id = auction
                 new_bid.user_id = request.user

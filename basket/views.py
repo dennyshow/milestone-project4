@@ -5,10 +5,12 @@ import stripe # new
 from django.conf import settings
 from django.views.generic.base import TemplateView
 
-# Stripe payments configuration
+        # Stripe payments configuration
+        
 stripe.api_key = settings.STRIPE_SECRET
 
-# Checkout Page
+            # Checkout Page
+            
 class view_basket(TemplateView):
     template_name = 'new_basket.html'
 
@@ -17,7 +19,8 @@ class view_basket(TemplateView):
         context['key'] = settings.STRIPE_PUBLISHABLE
         return context
         
-# Charging Page
+        
+            # To Charge Page
 def charge(request): # new
     if request.method == 'POST':
         if 'bid_price' in request.POST:
@@ -32,29 +35,5 @@ def charge(request): # new
         )
         return render(request, 'charge.html', {'price':bid_price})
      
-
-def add_to_basket(request, id):
-    # Add a specified product
-    quantity = int(request.POST.get('quantity'))
-    basket = request.session.get('basket', {})
-    basket[id] = basket.get(id, quantity)
-    
-    request.session['basket'] = basket
-    return redirect(reverse('home'))
-    
-    
-def update_basket(request, id):
-    # Update the quantity of a specific product
-    
-    quantity = int(request.POST.get('quantity'))
-    basket = request.session.get('basket', {})
-    
-    if quantity > 0:
-        basket[id] = quantity
-    else:
-        basket.pop(id)
-        
-    request.session['basket'] = basket
-    return redirect(reverse('view_basket'))
     
     
