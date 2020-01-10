@@ -311,3 +311,6 @@ The data was retrived from my MongoDB database
 ### Acknowledgements
 I received a great inspiration for this project via my mentor, he was a great help.
 Ali Ashik
+
+
+[![Build Status](https://travis-ci.org/dennyshow/milestone-project4.svg?branch=master)](https://travis-ci.org/dennyshow/milestone-project4)
