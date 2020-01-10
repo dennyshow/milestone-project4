@@ -3,12 +3,13 @@
 {% block content %}
 
     <div class="row">
+         <h1 class='text-center'><strong> Products</strong></h1>
         {% for product in products %}
-        <div class="col-md-4 display panel panel-default ">
+        <div class="col-md-6 display panel panel-default ">
             <div class="block">
                  <div class="panel-body">
                      <div class=" product image">
-                       <img src="{{ MEDIA_URL }}{{ product.image }}">
+                       <img src="{{ MEDIA_URL }}{{ product.image }}" width="330px" height="316px">
                     </div>
                 
                  
@@ -16,6 +17,7 @@
                      <p> {{ product.details }} </p>
                      <p> {{ product.history }} </p>
                      <p> {{ product.artefact }} </p>
+                     <p> € {{ product.price }} </p>
                      <span> {{ product.posted_date }} </span>
                      <form method="POST" action="{% url 'add_to_basket' product.id %}">
                          {% csrf_token %}

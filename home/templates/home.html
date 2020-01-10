@@ -4,35 +4,42 @@
 
 
 <div class="row">
+    
     {% for h in home %}
-    <div class="col-xs-4 col-sm-4 col-md-4  display panel panel-default ">
+    <div class=" col-md-6  display panel panel-default ">
 
         <div class="block">
+           
 
             <div class="panel-body">
                 <div class="image">
-                    <img src="{{ MEDIA_URL }}{{ h.product_id.image }}">
+                    <img src="{{ MEDIA_URL }}{{ h.product_id.image }}" width="330px" height="316px">
                 </div>
 
 
-                <div>
+                <div class="sub-head">
                     <p>Artefact Name: {{ h.product_id.title }}</p>
                     <p>Artefact Description: {{ h.product_id.details }}</p>
                     <p>Artefact Category: {{ h.product_id.artefact }}</p>
-                    <p>Buy Now: {{ h.product_id.price }}€</p>
+                    <!--<p>Last Bid: {{ h.product_id.price }}€</p>-->
                 </div>
-
-                <form action="{% url 'bid_from_home' h.id %}" method="POST">
+                
+                <div class="bid-height">
+                    
+                <form action="{% url 'bid_from_home'  %}" method="POST">
                     {% csrf_token %}
                     <div class="input-group">
-                        <input name="/" type="text" min="10" max="9999" class="form-control" placeholder="Place Bid">
+                        <input type="hidden" name="product_id" value={{ h.product_id.id }} />
+                        <input name="bid" type="text" min="10" max="9999" class="form-control" placeholder="Place Bid">
                         <span class="input-group-btn"><button class="btn btn-success">Bid</button></span>
                     </div>
                 </form>
-
+                
             </div>
 
-
+                
+            </div>
+             
         </div>
 
 

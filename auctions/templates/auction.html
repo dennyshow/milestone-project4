@@ -4,14 +4,15 @@
 
 
 <div class="row">
+             <h1 class='text-center'><strong> Auctions</strong></h1>
     {% for auction in auctions %}
-    <div class="col-md-4  display panel panel-default ">
+    <div class="col-md-6  display panel panel-default ">
 
         <div class="block">
 
             <div class="panel-body">
                 <div class="image">
-                    <img src="{{ MEDIA_URL }}{{ auction.product_id.image }}">
+                    <img src="{{ MEDIA_URL }}{{ auction.product_id.image }}"  width="330px" height="316px">
                 </div>
 
                 <div>
@@ -22,9 +23,10 @@
                     <p> End: {{ auction.end_time }}</p>
                 </div>
 
-            <form method="POST" action="{% url 'one_auction' auction.id  %}" method="GET">
+            <form action="{% url 'one_auction' %}" method="POST">
                 {% csrf_token %}
                 <div class="input-group">
+                    <input type="hidden" name="product_id" value={{ auction.product_id.id }} />
                     <input name="Raise" type="number" min="10" max="9999" class="form-control" placeholder="Raise">
                     <span class="input-group-btn"><button class="btn btn-success">Bid Now</button></span>
                 </div>

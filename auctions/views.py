@@ -10,61 +10,37 @@ from bids.models import Bid
 # Create your views here.
 
 def all_auctions(request):
-    
     # Create views for all auctions.
     auctions = Auction.objects.filter()
     return render(request, "auction.html", {"auctions": auctions})
-    
-    
 
-def one_auction(request, id):
+def one_auction(request):
     # Allow user to auction a product
-    
-    try:
-        
-        if request.method == "GET":
-            
-                auction_bid = Bid.objects.filter(id=id)
-                auction_bid = timezone.now()
-                auction_bid.bid_views += 1
-                auction_bid.save()
-                
-                new_bid = auction_bid
-                new_bid.append(auction_bid)
-                return redirect(reverse('bid'), auction_bid.id, {"auction_bid": auction_bid, "{new_bid": new_bid})
-        
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            p_id = request.POST['product_id']
+            auction = Auction.objects.get(product_id=p_id)
+            if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
+               
+                product = Product.objects.get(id=p_id)
+                product.price += int(request.POST['Raise'])
+                product.save()
+                new_bid = Bid()
+                # auction = get_object_or_404(Auction, pk=pk)
+                new_bid.product_id = product
+                new_bid.auction_id = auction
+                new_bid.user_id = request.user
+                new_bid.bid_time = timezone.now()
+                new_bid.bid_views += 1
+                new_bid.save()
+                print("Bidding done")
+            else:
+                print("Bidding closed")
+   
         else:
-            new_bid.delete(auction_bid)
-        return redirect(reverse('bid'))
-    
-    except ValueError:
-        return redirect(reverse('home'))
-        
-                
-
-
- 
-# def auction_bid(request, product_id):
-    
-#     #To allow bid a specified product in auctions
-    
-#     auction = Auction.objects.filter(product_id=product_id)
-    
-#     if request.user.is_authenticated:
-#         return redirect(reverse("auctions"))
-        
-#         if request.method=="get":
-#             auction = auction(Bid)
-#             auction.auction_views += 1
-#             auction.save()
-#             return redirect(reverse('auction'), auction.product_id, {"auction": auction})
+            messages.error(request, "Please register or sign in to bid!")
             
-#         else: 
-#             return render(request, 'auction.html', {"id":product_id})
-    
-#     else:
-#         messages.error(request, "Please log in to proceed")
-#         return redirect(reverse('auctions'))
+    return redirect(reverse('auctions'))
         
         
     

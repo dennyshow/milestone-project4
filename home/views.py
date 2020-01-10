@@ -5,39 +5,45 @@ from .models import Page
 from django.utils import timezone
 from products.models import Product
 from auctions.models import Auction
+from bids.models import Bid
 
 # Create your views here.
 
 def home_view(request):
     home = Page.objects.filter()
     return render(request, "home.html", {"home": home})
-    
-    
-    
 
-def bid_from_home(request, id):
+def bid_from_home(request):
     # view that allows user to bid from home page if authenticated.
-    
-    try:
-        
         if request.method == "POST":
-            
             if request.user.is_authenticated:
-                to_bid = get_object_or_404(Auction, id=id)
-                to_bid = timezone.now()
-                to_bid.bid_no += 1
-                to_bid.save()
-                return redirect(reverse('auctions'), to_bid.id, {"to_bid": to_bid})
+                p_id = request.POST['product_id']
+                auction = Auction.objects.get(product_id=p_id)
+                if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
+                   
+                    product = Product.objects.get(id=p_id)
+                    product.price += int(request.POST['bid'])
+                    product.save()
+                    new_bid = Bid()
+                    # auction = get_object_or_404(Auction, pk=pk)
+                    new_bid.product_id = product
+                    new_bid.auction_id = auction
+                    new_bid.user_id = request.user
+                    new_bid.bid_time = timezone.now()
+                    new_bid.bid_views += 1
+                    new_bid.save()
+                    print("Bidding done")
+                else:
+                    print("Bidding closed")
+                
+   
             else:
                 messages.error(request, "Please register or sign in to bid!")
             
-        else:
-            return render(request, "home.html")
+        # else:
+        #     return render(request, "home.html")
             
-        return redirect(reverse('auctions'))
-        
-    except ValueError:
-        return redirect(reverse('auctions'))
+        return redirect(reverse('home'))
         
     
    
