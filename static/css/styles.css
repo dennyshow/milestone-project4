@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family= Cormorant+Upright:100,200,300,400,500,600,700,|Muli:200,300,400,500,600,700,|Nunito:100,200,300,400,500,600,700');
+
 body{
+  width: 100%;
   margin:0;
   height: 100vh;
+  background-color: #dee1e8;
 }
 
 form {
@@ -27,4 +31,29 @@ p{
     color: brown;
     text-transform: uppercase;
     margin: 10px;
+    font-family: 'Cormorant+Upright', serif;
+}
+
+.panel {
+  border: none;
+  background-color: transparent;
+}
+
+
+.bid-detail {
+  margin-top: 60px
+}
+@media (max-width:768px) {
+   .bid-detail {
+  margin-top: 0px
+}
+}
+
+.border{
+   border-bottom:1px solid #317eac;
+}
+h1{
+  font-family: 'Cormorant+Upright', serif;
+
+  
 }
