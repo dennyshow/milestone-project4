@@ -40,7 +40,7 @@ urlpatterns = [
     url(r'^$', home_view, name="home"),
     url(r'^home/', include('home.urls')),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'^bid/', all_bids, name="all_bids"),
+    # url(r'^bid/', all_bids, name="all_bids"),
     url(r'bid/', include('bids.urls')),
     url(r'basket/', include('basket.urls')),
     url(r'^products/', all_products, name="products"),
