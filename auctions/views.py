@@ -13,6 +13,8 @@ def all_auctions(request):
     # Create views for all auctions.
     auctions = Auction.objects.filter()
     return render(request, "auction.html", {"auctions": auctions})
+    
+    
 
 def one_auction(request):
     # Allow user to auction a product

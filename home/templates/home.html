@@ -13,14 +13,14 @@
 
             <div class="panel-body">
                 <div class="image">
-                    <img src="{{ MEDIA_URL }}{{ h.product_id.image }}" width="330px" height="316px">
+                    <img src="{{ MEDIA_URL }}{{ h.product_id.image }}">
                 </div>
 
 
-                <div class="sub-head">
-                    <p>Artefact Name: {{ h.product_id.title }}</p>
-                    <p>Artefact Description: {{ h.product_id.details }}</p>
-                    <p>Artefact Category: {{ h.product_id.artefact }}</p>
+                <div>
+                    <p>Artefact Name: <span>{{ h.product_id.title }}</span></p>
+                    <p>Artefact Description: <span>{{ h.product_id.details }}</span></p>
+                    <p>Artefact Category: <span>{{ h.product_id.artefact }}</span></p>
                     <!--<p>Last Bid: {{ h.product_id.price }}€</p>-->
                 </div>
                 

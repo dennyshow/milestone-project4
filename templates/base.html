@@ -1,98 +1,120 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>ArtefactsCollections</title>
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
-        <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ArtefactsCollections</title>
+    
+                <!-- CSS SECTION -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+                <!-- FONT-AWESOME -->
+    <link rel="stylesheet" href="{% static 'font-awesome/font-awesome.min.css' %}" />
+                <!-- STATIC CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    
+            <!-- JS SECTION -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <!-- NAVBAR -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand" href="/">ArtefactsCollections</a>
-        </div>
+                <a class="navbar-brand" href="/">ArtefactsCollections</a>
+            </div>
 
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'products' %}">Products</a></li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-"><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'products' %}">Products</a></li>
 
-                {% if user.is_authenticated %}
-                 <li><a href="{% url 'auctions' %}">Auction</a></li>
-                <li><a href="{% url 'bid' %}">Bid</a></li>
-                <li><a href="">Profile</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'auctions' %}">Auction</a></li>
+                    <li><a href="{% url 'bid' %}">Bid</a></li>
+                    <li><a href="">Profile</a></li>
 
-                <form action="search" method="GET" class="navbar-form navbar-left">
-                    <div class="form-group"><input type="text" class="form-control" name="q"></div>
-                    <button type="search" class="btn btn-default">Search</button>
-                </form>
+                    <form action="search" method="GET" class="navbar-form navbar-left">
+                        <div class="form-group"><input type="text" class="form-control" name="q"></div>
+                        <button type="search" class="btn btn-default">Search</button>
+                    </form>
 
-                <li>
-                    <a href="{% url 'view_basket' %}"><i class="fa fa-shipping-cart"></i> Basket
+                    <li>
+                        <a href="{% url 'view_basket' %}"><i class="fa fa-shipping-cart"></i> Basket
                    {% if product_count > 0 %}<label class="badge badge-warning">{{ product_count }}</label>{% endif %}
                 </a>
-                </li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
 
-                {% else %}
+                    {% else %}
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'login' %}">Sign In</a></li>
-                    <li><a href="{% url 'registration' %}">Sign Up</a></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'login' %}">Sign In</a></li>
+                        <li><a href="{% url 'registration' %}">Sign Up</a></li>
+                    </ul>
+
+                    {% endif %}
+
                 </ul>
 
-                {% endif %}
+            </div>
+        </div>
+    </nav>
+                    <!-- NAVBAR END -->
+                    
+                    
+                    <!-- ALERT -->
 
-            </ul>
 
+    {% if messages %}
+    <div class="alert alert-success">
+        <div class="messages">
+            {% for message in messages %} 
+            
+                {{ message }} 
+            
+            {% endfor %}
         </div>
     </div>
-</nav>
-
-
-   {% if messages %}
-       <div class="alert alert-success">
-           <div class="messages">
-               {% for message in messages %}
-                   {{ message }}
-                {% endfor %}
-           </div>
-       </div>
     {% endif %}
     
+                <!-- ALERT END -->
+                
+                
+                <!-- BLOCK CONTENT -->
     <div class="container">
-        
-  
+
+
         {% block content %}
         
-    
+            <i class="fab fa-cc-stripe"></i>
+        
         {% endblock %}
-        
-</div>
-        
 
-<footer>
-    <div class="container">
-        <p>Made by Dehinde Shogbanmu</p>
     </div>
-</footer>
+                <!-- END BLOCK -->
+    
+
+            <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p class="footer">ArtefactsCollections created by Dehinde Shogbanmu</p>
+        </div>
+    </footer>
+            <!-- FOOTER END -->
 
 </body>
+
 </html>

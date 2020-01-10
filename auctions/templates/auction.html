@@ -4,7 +4,7 @@
 
 
 <div class="row">
-             <h1 class='text-center'><strong> Auctions</strong></h1>
+             <h1>Auctions</h1>
     {% for auction in auctions %}
     <div class="col-md-6  display panel panel-default ">
 
@@ -16,11 +16,11 @@
                 </div>
 
                 <div>
-                    <p>Artefact: {{ auction.product_id.title }}</p>
-                    <p>Description: {{ auction.product_id.details }}</p>
-                    <p> Date Posted: {{ auction.posted_date }} </p>
-                    <p> Start: {{ auction.start_time }}</p>
-                    <p> End: {{ auction.end_time }}</p>
+                    <p>Artefact: <span> {{ auction.product_id.title }} </span></p>
+                    <p>Description: <span> {{ auction.product_id.details }} </span></p>
+                    <p> Date Posted: <span> {{ auction.posted_date }} </span></p>
+                    <p> Start: <span> {{ auction.start_time }} </span></p>
+                    <p> End: <span> {{ auction.end_time }} </span></p>
                 </div>
 
             <form action="{% url 'one_auction' %}" method="POST">

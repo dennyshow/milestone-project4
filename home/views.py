@@ -12,6 +12,8 @@ from bids.models import Bid
 def home_view(request):
     home = Page.objects.filter()
     return render(request, "home.html", {"home": home})
+    
+    
 
 def bid_from_home(request):
     # view that allows user to bid from home page if authenticated.
