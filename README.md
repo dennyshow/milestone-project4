@@ -1,24 +1,34 @@
 # FULL STACK FRAMEWORKS
 
 
-## My final Milestone Project
+## My Fourth Milestone Project
 
-Throughout this project I will be using the technologies that I have learnt so far from Code Institue.
-This project will consist of HTML5, CSS3, JQuery, JavaScript, Python, Django and Sqlite.
+Throughout this project I will be using the Technologies that I have learnt so far from Code Institue.
+This project will consist of HTML5 in Jinja format, CSS3, JQuery, JavaScript, Python/Django(Frameworks) and Sqlite.
+I will be using Travis for Test and also Deployment Technologies like Heroku and AWS3(Images)
 
-The site designed was an auction web based app. Database was stored and retrieved from the backend(sqlite3).
-I have decided to follow the project requirement provided in brief.
+The site designed was an online ecommerce auction based app that can earn money for the owner.
+User can learn and know about the artefact before biding or purchasing.
+You have to be registered to place a bid.
+
+Registered user are allowed to either wait until auction ends or buy product directly.
+Winnner is decided when bid has closed!
+
+All databases used was stored and retrived in the backend via sqlite3.
+I have decided to follow the project requirements provided in brief.
 
 ## UX
 
-The UX for this project is easy and understandable. It is mainly a web based application that functions well. 
+The UX for this project is easy and understandable. It is mainly an ecommerce web based application that functions perfectly. 
 Navigations are quite easy and smooth for users. The application is intuitive to use and has information on it presented well.
-There is a filter that allows user to narrow/navigate thier search through the application. 
-The web application allows user to create,read(view),edit(update) and delete smoothly.
+There is a search input box that allows user to narrow/navigate thier search through the application. 
+The web application allows user to create, read(view), edit(update) and make payment without any interferenc.
 
 The data schema used displays perfectly throughout the form thus allowing user to implement the CRUD rule perfectly. 
-The application allows for addition of a new image or automatically adds a default image. 
+The images used are stored in a static folder
 The colour scheme was very simple and makes the site quite clear and readable enough for users.
+Fonts sizes are also considered for good readability.
+The site also has some interactivity functions but minimal.
 This application is very easy for a user to manipulate and understand.
 
 
@@ -32,21 +42,23 @@ This application is very easy for a user to manipulate and understand.
 
 * Button/Links - Was used to allow/trigger users intentions/actions on application.
 
-* Material Icon -  Icons was used to improve the UX for each logo when viewed by a user/visitor.
+* Font Awesome -  Icons was used to improve the UX for each logo when viewed by a user/visitor.
 
-* Forms/Filter - Materialize and Flask WTForms was helpful with predefined classes usable in Jinja templates.
+* Forms/Search Bar - Materialize and Flask WTForms was helpful with predefined classes usable in Jinja templates.
 
 * Wireframing- I just did some mock ups on paper with pen of how the site generally should look and feel. 
 
 
 ### Possible feature to implement 
 
-* User Account - Try to add ability for a user to Sign Up/Sign In
+* User Profile - Try to add ability for a user to view profile section
+* Reviews - Try to allow user leave a review on purchased/ bided product
+* 
 
 
 ### Getting Started
 
-The website is built using **HTML5**, **CSS3**, **JavaScript and JQuery** for interactivity, **Python**, **Materialize** frameworks, **Flask** frameworks
+The website is built using **HTML5**, **CSS3**, **JavaScript and JQuery** for interactivity, **Python**, **Bootstrap** frameworks, **Django** frameworks
 
 ### Prerequisites
 
@@ -248,9 +260,9 @@ I used fonts from **@googleapis CSS 'Overlock, Londrina+Solid'** to create diffe
 
 ## Deployment
 
-### GitHub Deployment
+### AWS3 Deployment
 
-Created a new repositories on **Github** where the project will be deployed unto at each commit.
+Created a new  **AWS3** account where the project images will be deployed unto.
 At first, use a **git remote** command to link project with new repo.
 Then use the **git push -u origin master** command to push codes and every change into new repo
 
@@ -295,22 +307,26 @@ I can easily traceback my code on GitHub.
 
 ### Authors
 
-**Dehinde - Shogbanmu** - *Project 3* 
+**Dehinde - Shogbanmu** - *Project 4* 
 
 
 
 ## Credits
 
 ### Content 
-The images used was retrieved from Google
-The recipe used was retreived from Google
+The images and history used was retrieved from Google
 The logos was generated via icon8
-The data was retrived from my MongoDB database
+The data was retrived from my sqlite3
 
 
 ### Acknowledgements
-I received a great inspiration for this project via my mentor, he was a great help.
-Ali Ashik
+I received a great inspiration for this project via my mentor, tutors, and slack he was a great help.
+Ali Ashik(Mentor)
+Samantha(Tutor)
+Michael(Tutor)
+Stephen(Tutor)
+Chris
+
 
 
 [![Build Status](https://travis-ci.org/dennyshow/milestone-project4.svg?branch=master)](https://travis-ci.org/dennyshow/milestone-project4)
