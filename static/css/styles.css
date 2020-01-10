@@ -1,4 +1,7 @@
+    /*GOOGLE FONTS*/
 @import url('https://fonts.googleapis.com/css?family= Cormorant+Upright:100,200,300,400,500,600,700,|Muli:200,300,400,500,600,700,|Nunito:100,200,300,400,500,600,700');
+
+
 
 body{
   width: 100%;
@@ -7,9 +10,13 @@ body{
   background-color: #dee1e8;
 }
 
+
+
 form {
     width: 100%;
+    
 }
+
 
 
 .block {
@@ -17,43 +24,109 @@ form {
   background-color: #eee;
 }
 
-footer {
-  text-align: center;
-  background-color: #54b4eb;
-}
+            /*IMAGES*/
 
 .image img {
   width: 100%;
   display: block;
 }
 
+img {
+  width: 330px;
+  height: 316px;
+}
+
+        /*PARAGRAPH AND SPAN*/
+
 p{
     color: brown;
     text-transform: uppercase;
-    margin: 10px;
     font-family: 'Cormorant+Upright', serif;
+    font-size: 20px;
+    font-weight: 500;
 }
+
+p>span {
+  color: black;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+span {
+  font-family: 'Cormorant+Upright', serif;
+  color: #1D2D44;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  
+}
+
+        /*PANEL AND BID-DETAIL*/
 
 .panel {
   border: none;
   background-color: transparent;
 }
 
+.panel-body {
+  background:#317eac7a;
+}
+
 
 .bid-detail {
   margin-top: 60px
 }
+
+        /*MEDIA QUERIES*/
+        
 @media (max-width:768px) {
    .bid-detail {
   margin-top: 0px
 }
 }
 
-.border{
-   border-bottom:1px solid #317eac;
-}
-h1{
-  font-family: 'Cormorant+Upright', serif;
 
-  
+          /* HEADERS */
+          
+.border{
+   border-bottom:5px solid #a3c2d4;
+}
+
+h1{
+  font-family: 'Nunito', serif;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #064789;
+  font-weight: 600;
+
+}
+
+h2 {
+  font-family: 'Nunito', serif;
+  font-weight: 600;
+}
+
+h3 {
+  color: #151617c2;
+  font-family: 'Nunito', serif;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+li {
+  background-color: #2da3e7;
+}
+
+      /*FOOTER*/
+
+
+footer {
+  background-color: #54b4eb;
+}
+
+.footer {
+  text-transform: capitalize;
+  text-align: center;
 }
