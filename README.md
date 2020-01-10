@@ -38,22 +38,20 @@ This application is very easy for a user to manipulate and understand.
 
 * Images - Flask werkzeug was used to allow user attach image files. Images used are acquired via google.
 
-* Card - Materialize predefinded classes was used for great UX view. 
-
-* Button/Links - Was used to allow/trigger users intentions/actions on application.
+* Button - Was used to allow users actions on application.
 
 * Font Awesome -  Icons was used to improve the UX for each logo when viewed by a user/visitor.
 
-* Forms/Search Bar - Materialize and Flask WTForms was helpful with predefined classes usable in Jinja templates.
+* Forms/Search Bar - Bootstrap and Django Forms was helpful and usable in Jinja templates to allow app functions.
 
-* Wireframing- I just did some mock ups on paper with pen of how the site generally should look and feel. 
+* Wireframing- I just did some mock ups on balsamiq of how the site generally should look and feel. 
 
 
 ### Possible feature to implement 
 
 * User Profile - Try to add ability for a user to view profile section
 * Reviews - Try to allow user leave a review on purchased/ bided product
-* 
+* Checkout - Allow the use of basket checkout should incase user bid more than one item.
 
 
 ### Getting Started
@@ -89,28 +87,32 @@ This site is supported on all browsers. Check below for tested devices and brows
 
 ## Custom Fonts 
 
-I used fonts from **@googleapis CSS 'Overlock, Londrina+Solid'** to create difference in headers and written styles.
+I used fonts from **@googleapis CSS 'Cormorant+Upright, Nurino'** to create difference in headers, paragraph, span and written styles.
 
 ## Technologies used
 
 
 * JQuery & JavaScript - Was used to allow interactivity, file attachment and buttons to function smoothly. [Jquery](https://jquery.com/)
 
-* NoSQL - MongoDB was used to create database and pulled via the route. [MongoDB](https://www.mongodb.com/)
+* Sqlite3 - SQLite3 was used to create database and pulled via the backend. [MongoDB](https://www.mongodb.com/)
 
 * Python - Was used to route and call backend database schema from MongoDB.[Python](Lecture Notes)
 
-* Flask - Produces very useful packages like Jinja,WTForms,PyMongo that allows application to be more functional.[Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* Django - Produces very useful packages like Auth, Admin Jinja, Bootstrap Forms,  that allows application to be more functional.[Flask](https://flask.palletsprojects.com/en/1.1.x/)
+
+* AWS3 BUCKET - Using amazon cloud based server to store images and static files.
+
+* AWS3 IAM - Using to store images and static folders.
 
 * Heroku - Was used to deploy application to run on any every technological devices. [Heroku](https://heroku.com/)
 
-* Materialze JS - For easy dropdown during user select option and mobile screen view [Materialize](http://archives.materializecss.com/0.100.2/getting-started.html)
+* Stripe JS - For easy payment when user select paynow option on all screen sizes [Materialize](http://archives.materializecss.com/0.100.2/getting-started.html)
 
-* Favicons - Used to improve UX when viewing the top of the webpage. [Favicon-generator](https://favicon.io/favicon-generator/)
+* Fontawesome - Used to improve UX when viewing the top of the webpage. [Favicon-generator](https://favicon.io/favicon-generator/)
 
-* Materialize Classes - To trigger more styles and reduce CSS over-styling [Materialize](http://archives.materializecss.com/0.100.2/)
+* Bootstrap Classes - To trigger more styles and reduce CSS over-styling [Materialize](http://archives.materializecss.com/0.100.2/)
 
-* Material Icon - To improve view of UX when surfing the application [Material Icon](https://material.io/)
+* Font awesome Icon - To improve view of UX when surfing the application [Material Icon](https://material.io/)
 
 
 
@@ -130,16 +132,16 @@ I used fonts from **@googleapis CSS 'Overlock, Londrina+Solid'** to create diffe
 |    Tested      |   Chrome      | Functions  |
 | -------------  |:-------------:|  ---------:|
 | Navbar         |    Yes        |     Yes    |
-| Filter         |    Yes        |     Yes    |
+| Search         |    Yes        |     Yes    |
+| Forms          |    Yes        |     Yes    |
 | Images         |    Yes        |     Yes    |
-| Select BTN     |    Yes        |     Yes    |
-| Link BTN       |    Yes        |     Yes    |
-| Add BTN        |    Yes        |     Yes    |
-| Edit BTN       |    Yes        |     Yes    |
-| Filter BTN     |    Yes        |     Yes    |
-| File Attach    |    Yes        |     Yes    |
-| Delete BTN     |    Yes        |     Yes    |
-| Update BTN     |    Yes        |     Yes    |
+| BTN            |    Yes        |     Yes    |
+| Place Bid      |    Yes        |     Yes    |
+| Update Bid     |    Yes        |     Yes    |
+| Search Product |    Yes        |     Yes    |
+| Search Category|    Yes        |     Yes    |
+| Carousel       |    Yes        |  Partially |
+
 
 
 
@@ -147,80 +149,79 @@ I used fonts from **@googleapis CSS 'Overlock, Londrina+Solid'** to create diffe
 |    Tested      |   IE          | Functions  |
 | -------------  |:-------------:|  ---------:|
 | Navbar         |    Yes        |     Yes    |
-| Filter         |    Yes        |     Yes    |
+| Search         |    Yes        |     Yes    |
+| Forms          |    Yes        |     Yes    |
 | Images         |    Yes        |     Yes    |
-| Select BTN     |    Yes        |     Yes    |
-| Link BTN       |    Yes        |     Yes    |
-| Add BTN        |    Yes        |     Yes    |
-| Edit BTN       |    Yes        |     Yes    |
-| Filter BTN     |    Yes        |     Yes    |
-| File Attach    |    Yes        |     Yes    |
-| Delete BTN     |    Yes        |     Yes    |
-| Update BTN     |    Yes        |     Yes    |
+| BTN            |    Yes        |     Yes    |
+| Place Bid      |    Yes        |     Yes    |
+| Update Bid     |    Yes        |     Yes    |
+| Search Product |    Yes        |     Yes    |
+| Search Category|    Yes        |     Yes    |
+| Carousel       |    Yes        |  Partially |
 
 
 
-|    Tested      |   Android      | Functions |
+|    Tested      |   Android     | Functions  |
 | -------------  |:-------------:|  ---------:|
 | Navbar         |    Yes        |     Yes    |
-| Filter         |    Yes        |     Yes    |
+| Search         |    Yes        |     Yes    |
+| Forms          |    Yes        |     Yes    |
 | Images         |    Yes        |     Yes    |
-| Select BTN     |    Yes        |     Yes    |
-| Link BTN       |    Yes        |     Yes    |
-| Add BTN        |    Yes        |     Yes    |
-| Edit BTN       |    Yes        |     Yes    |
-| Filter BTN     |    Yes        |     Yes    |
-| File Attach    |    Yes        |     Yes    |
-| Delete BTN     |    Yes        |     Yes    |
-| Update BTN     |    Yes        |     Yes    |
+| BTN            |    Yes        |     Yes    |
+| Place Bid      |    Yes        |     Yes    |
+| Update Bid     |    Yes        |     Yes    |
+| Search Product |    Yes        |     Yes    |
+| Search Category|    Yes        |     Yes    |
+| Carousel       |    Yes        |  Partially |
+
+
 
 
 
 |    Tested      |Samsung S7-S10 | Functions  |
 | -------------  |:-------------:|  ---------:|
 | Navbar         |    Yes        |     Yes    |
-| Filter         |    Yes        |     Yes    |
+| Search         |    Yes        |     Yes    |
+| Forms          |    Yes        |     Yes    |
 | Images         |    Yes        |     Yes    |
-| Select BTN     |    Yes        |     Yes    |
-| Link BTN       |    Yes        |     Yes    |
-| Add BTN        |    Yes        |     Yes    |
-| Edit BTN       |    Yes        |     Yes    |
-| Filter BTN     |    Yes        |     Yes    |
-| File Attach    |    Yes        |     Yes    |
-| Delete BTN     |    Yes        |     Yes    |
-| Update BTN     |    Yes        |     Yes    |
+| BTN            |    Yes        |     Yes    |
+| Place Bid      |    Yes        |     Yes    |
+| Update Bid     |    Yes        |     Yes    |
+| Search Product |    Yes        |     Yes    |
+| Search Category|    Yes        |     Yes    |
+| Carousel       |    Yes        |  Partially |
 
 
 
 |    Tested      |   IPhone      | Functions  |
 | -------------  |:-------------:|  ---------:|
 | Navbar         |    Yes        |     Yes    |
-| Filter         |    Yes        |     Yes    |
+| Search         |    Yes        |     Yes    |
+| Forms          |    Yes        |     Yes    |
 | Images         |    Yes        |     Yes    |
-| Select BTN     |    Yes        |     Yes    |
-| Link BTN       |    Yes        |     Yes    |
-| Add BTN        |    Yes        |     Yes    |
-| Edit BTN       |    Yes        |     Yes    |
-| Filter BTN     |    Yes        |     Yes    |
-| File Attach    |    Yes        |     Yes    |
-| Delete BTN     |    Yes        |     Yes    |
-| Update BTN     |    Yes        |     Yes    |
+| BTN            |    Yes        |     Yes    |
+| Place Bid      |    Yes        |     Yes    |
+| Update Bid     |    Yes        |     Yes    |
+| Search Product |    Yes        |     Yes    |
+| Search Category|    Yes        |     Yes    |
+| Carousel       |    Yes        |  Partially |
+
 
 
 
 |    Tested      |   Firefox      | Functions |
 | -------------  |:-------------:|  ---------:|
 | Navbar         |    Yes        |     Yes    |
-| Filter         |    Yes        |     Yes    |
+| Search         |    Yes        |     Yes    |
+| Forms          |    Yes        |     Yes    |
 | Images         |    Yes        |     Yes    |
-| Select BTN     |    Yes        |     Yes    |
-| Link BTN       |    Yes        |     Yes    |
-| Add BTN        |    Yes        |     Yes    |
-| Edit BTN       |    Yes        |     Yes    |
-| Filter BTN     |    Yes        |     Yes    |
-| File Attach    |    Yes        |     Yes    |
-| Delete BTN     |    Yes        |     Yes    |
-| Update BTN     |    Yes        |     Yes    |
+| BTN            |    Yes        |     Yes    |
+| Place Bid      |    Yes        |     Yes    |
+| Update Bid     |    Yes        |     Yes    |
+| Search Product |    Yes        |     Yes    |
+| Search Category|    Yes        |     Yes    |
+| Carousel       |    Yes        |  Partially |
+
 
 
 
@@ -228,42 +229,52 @@ I used fonts from **@googleapis CSS 'Overlock, Londrina+Solid'** to create diffe
 |    Tested      |   Opera       | Functions  |
 | -------------  |:-------------:|  ---------:|
 | Navbar         |    Yes        |     Yes    |
-| Filter         |    Yes        |     Yes    |
+| Search         |    Yes        |     Yes    |
+| Forms          |    Yes        |     Yes    |
 | Images         |    Yes        |     Yes    |
-| Select BTN     |    Yes        |     Yes    |
-| Link BTN       |    Yes        |     Yes    |
-| Add BTN        |    Yes        |     Yes    |
-| Edit BTN       |    Yes        |     Yes    |
-| Filter BTN     |    Yes        |     Yes    |
-| File Attach    |    Yes        |     Yes    |
-| Delete BTN     |    Yes        |     Yes    |
-| Update BTN     |    Yes        |     Yes    |
+| BTN            |    Yes        |     Yes    |
+| Place Bid      |    Yes        |     Yes    |
+| Update Bid     |    Yes        |     Yes    |
+| Search Product |    Yes        |     Yes    |
+| Search Category|    Yes        |     Yes    |
+| Carousel       |    Yes        |  Partially |
+
 
 
 
 |    Tested      |   Safari      | Functions  |
 | -------------  |:-------------:|  ---------:|
 | Navbar         |    Yes        |     Yes    |
-| Filter         |    Yes        |     Yes    |
+| Search         |    Yes        |     Yes    |
+| Forms          |    Yes        |     Yes    |
 | Images         |    Yes        |     Yes    |
-| Select BTN     |    Yes        |     Yes    |
-| Link BTN       |    Yes        |     Yes    |
-| Add BTN        |    Yes        |     Yes    |
-| Edit BTN       |    Yes        |     Yes    |
-| Filter BTN     |    Yes        |     Yes    |
-| File Attach    |    Yes        |     Yes    |
-| Delete BTN     |    Yes        |     Yes    |
-| Update BTN     |    Yes        |     Yes    |
+| BTN            |    Yes        |     Yes    |
+| Place Bid      |    Yes        |     Yes    |
+| Update Bid     |    Yes        |     Yes    |
+| Search Product |    Yes        |     Yes    |
+| Search Category|    Yes        |     Yes    |
+| Carousel       |    Yes        |  Partially |
+
 
 
 
 
 ## Deployment
 
-### AWS3 Deployment
+### AWS3 Deployment Process
 
-Created a new  **AWS3** account where the project images will be deployed unto.
-At first, use a **git remote** command to link project with new repo.
+Created a new Amazon account and connect to amazon service **AWS3** account are cloud based serve where 
+the project media and staicfiles will be stored unto.
+At first, we locate **S3** on amazon service then we create a bucket. While creating the bucket on **S3**,
+the note that public access must be all switched off to allow access for users.
+
+Once we've created the bucket, we now can now click on it's properties and enable the **Static Website Hosting** option, 
+so it can serve the purpose of hosting our static files, you will need to imput an **index.html** and **error.html** before saving.
+Then we go into the created bucket **Permissions** and click into **CORS configuration**, this part already have a prefilled default config,
+All that is needed is just to write the default code and save the config.
+
+Then we go into the **bucket policy** to allows access to the contents across all web 
+and inside this we will put in here some code including  arn displayed at the 
 Then use the **git push -u origin master** command to push codes and every change into new repo
 
 Using the CLI in terminal to call **git init** to start git initialization on the project.
@@ -292,12 +303,12 @@ it requires to be updated along with any installed packages so it can depoly suc
 
 
 
-### HTML, CSS, JQuery, JavaScript, Python
+### HTML, CSS, JQuery, JavaScript, Python(Django Framework)
 
 All my mark up is **HTML valid**
 All my styling is **CSS valid**
 All my syntax is **JavaScript syntactically valid**
-All my routing is **Python valid**
+All my routing, views and urls is **Django valid**
 
 #### Version Used
 
@@ -321,11 +332,11 @@ The data was retrived from my sqlite3
 
 ### Acknowledgements
 I received a great inspiration for this project via my mentor, tutors, and slack he was a great help.
-Ali Ashik(Mentor)
-Samantha(Tutor)
-Michael(Tutor)
-Stephen(Tutor)
-Chris
+* Ali Ashik(Mentor)
+* Samantha(Tutor)
+* Michael(Tutor)
+* Stephen(Tutor)
+* Chris(Mentor)
 
 
 

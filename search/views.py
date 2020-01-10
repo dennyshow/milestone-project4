@@ -6,19 +6,27 @@ from home.models import Page
 from django.utils import timezone
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.db.models import Q
+from django.contrib import messages
 
 # Create your views here.
 
-
 def do_search_on_home(request):
-    home = Page.objects.filter(name__icontains=request.GET['home'])
+    home = Page.objects.filter(id=1)
     return render(request,  {"home": home})
+    
+    
 
+def do_search(request):
+    query = request.GET.get('q')
+    if query is not None:
+        lookups= Q(title__icontains=query) | Q(artefact__icontains=query)
 
+        products = Product.objects.filter(lookups).distinct()
+        if not products:
+            messages.error(request, "No product available!")
 
-def do_search_on_products(request):
-    products = Product.objects.filter(name__icontains=request.GET['products'])
-    return render(request, {"products": products})
+    return render(request, "products.html", {"products": products})
     
     
     

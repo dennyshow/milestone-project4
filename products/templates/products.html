@@ -26,14 +26,7 @@
                      <p>Amount: € {{ product.price }} </p>
                      <span> {{ product.posted_date }} </span>
                      
-                             <!-- SUBMIT FORM -->
-                     <form method="POST" action="{% url 'add_to_basket' product.id %}">
-                         {% csrf_token %}
-                         <div class="input-group">
-                             <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                             <span class="input-group-btn"><button class="btn btn-success" type="submit">Buy Now</button></span>
-                         </div>
-                     </form>
+                           
                              <!-- FORM END -->
                 
                  </div>

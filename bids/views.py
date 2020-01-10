@@ -5,20 +5,16 @@ from .models import Bid
 from auctions.models import Auction
 from django.utils import timezone
 from datetime import datetime, timedelta
-
-
-
+from django.conf import settings
 
 # Create your views here.
 
 def all_bids(request):
     # display all current and expired bids
     bid = Bid.objects.all()
-    return render(request, "bid.html", {"bid": bid})
-    
-    
+    publishable_key = settings.STRIPE_PUBLISHABLE
+    return render(request, "bid.html", {"bid": bid, 'key':publishable_key})
 
-    
 
 
 # def bid_page(request, auction_id):

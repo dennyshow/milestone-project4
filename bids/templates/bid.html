@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load mathfilters %}
+ {% block content %}
 
 
 <div class="row">
@@ -58,11 +60,17 @@
             <h4>Artefact Category:</h4>
             <span> {{ b.product_id.artefact }}</span>
         </div>
-
-        <form action="{% url 'bid_from_home' %}" method="POST">
-            {% csrf_token %}
-
-            <span> Bid Price: € {{ b.product_id.price }} <button class="btn btn-success">Pay Now</button></span>
+        
+         <form action="{% url 'charge' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="bid_price" value={{ b.product_id.auction_price }} />
+              <span> Bid Price: € {{ b.product_id.auction_price }}</span>
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="{{ key }}"
+                      data-description="Artefacts Collections"
+                      data-amount="{{ b.product_id.auction_price | mul:100 }}"
+                      data-locale="auto">
+              </script>
         </form>
 
     </div>

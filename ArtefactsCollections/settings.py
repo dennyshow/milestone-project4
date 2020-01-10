@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import env
+import django_heroku
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -48,7 +50,8 @@ INSTALLED_APPS = [
     'basket',
     'users',
     'checkout',
-    
+    'mathfilters',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -138,14 +141,42 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 
-MEDIAFILES_LOCATION = 'media'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=9460800',
+}
 
-STATIC_URL = '/static/'
+
+AWS_STORAGE_BUCKET_NAME = 'denny-auctionsite'
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+# AWS_ACCESS_KEY_ID = "AKIAIMZ24JIBAA4MDLXQ"
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+# AWS_SECRET_ACCESS_KEY = "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"
+
+AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+
+
 
 STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")
 STRIPE_SECRET = os.getenv("STRIPE_SECRET")
 
+
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+django_heroku.settings(locals())

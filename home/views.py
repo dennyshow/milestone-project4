@@ -6,15 +6,15 @@ from django.utils import timezone
 from products.models import Product
 from auctions.models import Auction
 from bids.models import Bid
+from django.db.models import Q
 
 # Create your views here.
 
 def home_view(request):
     home = Page.objects.filter()
     return render(request, "home.html", {"home": home})
-    
-    
 
+    
 def bid_from_home(request):
     # view that allows user to bid from home page if authenticated.
         if request.method == "POST":
@@ -24,7 +24,7 @@ def bid_from_home(request):
                 if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
                    
                     product = Product.objects.get(id=p_id)
-                    product.price += int(request.POST['bid'])
+                    product.auction_price += int(request.POST['bid'])
                     product.save()
                     new_bid = Bid()
                     # auction = get_object_or_404(Auction, pk=pk)
@@ -34,9 +34,9 @@ def bid_from_home(request):
                     new_bid.bid_time = timezone.now()
                     new_bid.bid_views += 1
                     new_bid.save()
-                    print("Bidding done")
+                    messages.error(request, "Bidding is done!")
                 else:
-                    print("Bidding closed")
+                    messages.error(request, "Bidding is closed!")
                 
    
             else:

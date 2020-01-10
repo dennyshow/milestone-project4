@@ -25,7 +25,7 @@ def one_auction(request):
             if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
                
                 product = Product.objects.get(id=p_id)
-                product.price += int(request.POST['Raise'])
+                product.auction_price += int(request.POST['Raise'])
                 product.save()
                 new_bid = Bid()
                 # auction = get_object_or_404(Auction, pk=pk)
@@ -35,9 +35,9 @@ def one_auction(request):
                 new_bid.bid_time = timezone.now()
                 new_bid.bid_views += 1
                 new_bid.save()
-                print("Bidding done")
+                messages.error(request, "Bidding is Updated!")
             else:
-                print("Bidding closed")
+                messages.error(request, "Bidding is closed!")
    
         else:
             messages.error(request, "Please register or sign in to bid!")
