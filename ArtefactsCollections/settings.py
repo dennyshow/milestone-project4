@@ -1,5 +1,5 @@
 import os	
-import env	
+	
 import django_heroku	
 
 
