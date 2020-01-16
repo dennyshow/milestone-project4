@@ -98,7 +98,7 @@
                 <!-- FOR LOOP END -->
 </div>
 
-                <!-- SCRIPT TO HIDE PAYMENT BUTTON -->
+                <!-- SCRIPT FOR PAYMENT BUTTON -->
 <script type="text/javascript">
 
 var temp =  Date.parse("{% now "j F Y H:i" %}");
@@ -106,9 +106,10 @@ var time = document.querySelectorAll(".form");
 time.forEach(function(a){
  var temp2=Date.parse(a.getAttribute("data-name").replace(/a.m.|p.m./i, ''));
      
-
+            // if biding time is greater than current time hide button
  if(temp>temp2){
  }
+            // if biding time is lesser than current time display button
  else{
       a.querySelector("button").style.display = 'none'
 
