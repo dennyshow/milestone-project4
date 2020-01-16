@@ -7,7 +7,7 @@ from .models import Auction
 from products.models import Product
 from bids.models import Bid
 
-# Create your views here.
+
 
 def all_auctions(request):
     # Create views for all auctions.
@@ -27,14 +27,23 @@ def one_auction(request):
                 product = Product.objects.get(id=p_id)
                 product.auction_price += int(request.POST['Raise'])
                 product.save()
-                new_bid = Bid()
+                bids = Bid.objects.filter(product_id=p_id)
+                if bids:
+                    bid = bids[0]
+                    print(request.user)
+                    bid.user_id = request.user
+                    bid.bid_time = timezone.now()
+                    bid.bid_views += 1
+                    bid.save()
                 
-                new_bid.product_id = product
-                new_bid.auction_id = auction
-                new_bid.user_id = request.user
-                new_bid.bid_time = timezone.now()
-                new_bid.bid_views += 1
-                new_bid.save()
+                else:
+                    new_bid = Bid()
+                    new_bid.product_id = product
+                    new_bid.auction_id = auction
+                    new_bid.user_id = request.user
+                    new_bid.bid_time = timezone.now()
+                    new_bid.bid_views += 1
+                    new_bid.save()
                 messages.error(request, "Bidding is Updated!")
             else:
                 messages.error(request, "Bidding is closed!")

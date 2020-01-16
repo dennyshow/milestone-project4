@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load mathfilters %}
- {% block content %}
+{% block content %}
 
 
 <div class="row">
@@ -61,17 +61,24 @@
             <span> {{ b.product_id.artefact }}</span>
         </div>
         
-         <form action="{% url 'charge' %}" method="post">
+                <!-- FORM START-->
+         <form action="{% url 'charge' %}" class="form" method="post" data-name="{{b.auction_id.end_time}}">
               {% csrf_token %}
               <input type="hidden" name="bid_price" value={{ b.product_id.auction_price }} />
+              <input type="hidden" name="bid_product" value={{ b.product_id.id }} />
               <span> Bid Price: € {{ b.product_id.auction_price }}</span>
+
+                  <!-- STRIPE PAYMENT JS-->
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                       data-key="{{ key }}"
                       data-description="Artefacts Collections"
                       data-amount="{{ b.product_id.auction_price | mul:100 }}"
                       data-locale="auto">
               </script>
+              <div id="error"></div>
+                  <!-- STRIPE PAYMENT JS-->
         </form>
+                <!-- FORM END-->
 
     </div>
 
@@ -79,7 +86,7 @@
 
         <h3 class='border'> Description:</h3><span> {{ b.product_id.details }}</span>
         <h3 class='border'> History: </h3> <span> {{ b.product_id.history }}</span>
-
+ 
     </div>
 
 
@@ -88,10 +95,29 @@
 
 
     {% endfor %}
+                <!-- FOR LOOP END -->
 </div>
 
+                <!-- SCRIPT TO HIDE PAYMENT BUTTON -->
+<script type="text/javascript">
 
+var temp =  Date.parse("{% now "j F Y H:i" %}");
+var time = document.querySelectorAll(".form");
+time.forEach(function(a){
+ var temp2=Date.parse(a.getAttribute("data-name").replace(/a.m.|p.m./i, ''));
+     
 
+ if(temp>temp2){
+ }
+ else{
+      a.querySelector("button").style.display = 'none'
+
+ }
+    
+})
+
+</script>
+        <!-- SCRIPT END -->
 
 
 {% endblock %}

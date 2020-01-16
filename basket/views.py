@@ -33,7 +33,6 @@ def charge(request): # new
         auction = Auction.objects.get(product_id=product_id)
         bid = Bid.objects.get(product_id=product_id)
         if timezone.now() >= auction.end_time:
-            print(request.user.id, bid.user_id.id)
             if request.user.id == bid.user_id.id:
                 if 'bid_price' in request.POST:
                     bid_price = request.POST['bid_price']
@@ -45,6 +44,7 @@ def charge(request): # new
                     description='A Django charge',
                     source=request.POST['stripeToken']
                 )
+                bid.delete()
                 return render(request, 'charge.html', {'price':bid_price})
             else:
                 messages.error(request, "Only winner can purchase!")

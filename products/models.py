@@ -1,7 +1,6 @@
 from django.db import models
 from datetime import datetime
-
-
+from django.contrib.auth.models import User
 
 class Product(models.Model):
     ARTEFACTS = (
@@ -20,6 +19,6 @@ class Product(models.Model):
     artefact = models.CharField(max_length=5, choices=ARTEFACTS)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     auction_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-    
+
     def __str__(self):
         return "(" + self.title + ", " + self.details + ", " + self.history + ", " + self.artefact + ")"
