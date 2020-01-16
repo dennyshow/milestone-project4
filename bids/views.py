@@ -13,6 +13,7 @@ def all_bids(request):
     # display all current and expired bids
     bid = Bid.objects.all()
     publishable_key = settings.STRIPE_PUBLISHABLE
+    print(publishable_key)
     return render(request, "bid.html", {"bid": bid, 'key':publishable_key})
 
 
