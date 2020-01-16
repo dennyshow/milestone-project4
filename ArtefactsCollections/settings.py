@@ -1,5 +1,5 @@
-import os	
-	
+import os
+import env
 import django_heroku	
 
 
@@ -158,11 +158,8 @@ STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'	
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)	
 
-
-
-
-STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")	
-STRIPE_SECRET = os.getenv("STRIPE_SECRET")	
+STRIPE_PUBLISHABLE =  os.environ.get("STRIPE_PUBLISHABLE")	
+STRIPE_SECRET =  os.environ.get("STRIPE_SECRET")	
 
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
