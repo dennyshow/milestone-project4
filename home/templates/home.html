@@ -34,7 +34,7 @@
                     {% csrf_token %}
                     <div class="input-group">
                         <input type="hidden" name="product_id" value={{ h.product_id.id }} />
-                        <input name="bid" type="text" min="10" max="9999" class="form-control" placeholder="Place Bid">
+                        <input name="bid" type="text" min="10" max="9999" class="form-control" placeholder="Enter minimum € 20">
                         <span class="input-group-btn"><button class="btn btn-success">Bid</button></span>
                     </div>
                 </form>
