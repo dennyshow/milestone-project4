@@ -7,14 +7,18 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 from django.conf import settings
 
-# Create your views here.
+
 
 def all_bids(request):
-    # display all current and expired bids
+    
+         # display all current and expired bids
     bid = Bid.objects.all()
+    endtime_list = []
+        # the end of auction to allow user make payment
+    for a in bid:
+        endtime_list.append(str(a.auction_id.end_time))
     publishable_key = settings.STRIPE_PUBLISHABLE
-    print(publishable_key)
-    return render(request, "bid.html", {"bid": bid, 'key':publishable_key})
+    return render(request, "bid.html", {"bid": bid, 'key':publishable_key, 'end_time':endtime_list})
 
 
 
