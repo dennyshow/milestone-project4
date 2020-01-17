@@ -11,9 +11,17 @@ from bids.models import Bid
 
 def all_auctions(request):
     # Create views for all auctions.
-    auctions = Auction.objects.filter()
-    return render(request, "auction.html", {"auctions": auctions})
+    # Let auctions available to only registered user/bidder
+    if request.user.is_authenticated:
+        auctions = Auction.objects.filter()
+        return render(request, "auction.html", {"auctions": auctions})
+    else:
+        messages.error(request, "You must be a registered user to view this page")
+        return redirect(reverse('home'))
+        
+    return render(request, "home.html")
     
+
     
 
 def one_auction(request):
@@ -30,7 +38,6 @@ def one_auction(request):
                 bids = Bid.objects.filter(product_id=p_id)
                 if bids:
                     bid = bids[0]
-                    print(request.user)
                     bid.user_id = request.user
                     bid.bid_time = timezone.now()
                     bid.bid_views += 1
