@@ -21,6 +21,12 @@ class UserRegistrationForm(UserCreationForm):
         label="Confirm Password", 
         widget=forms.PasswordInput)
         
+    phone = forms.CharField(label="Phone")
+    street_address1 = forms.CharField(label="Street Address 1")
+    street_address2 = forms.CharField(label="Street Address 2")
+    county = forms.CharField(label="County")
+    eircode = forms.CharField(label="Eircode")
+    country = forms.CharField(label="Country")
     
     class Meta:
         model = User

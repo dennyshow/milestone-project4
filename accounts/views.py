@@ -3,6 +3,8 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
+from .models import Bidder
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -59,7 +61,16 @@ def registration(request):
         registration_form = UserRegistrationForm(request.POST)
         
         if registration_form.is_valid():
-            registration_form.save()
+            bidding_user = registration_form.save()
+            bidding_user.refresh_from_db() 
+            print(registration_form.cleaned_data)
+            bidding_user.bidder.phone = registration_form.cleaned_data.get('phone')
+            bidding_user.bidder.street_address1 = registration_form.cleaned_data.get('street_address1')
+            bidding_user.bidder.street_address2 = registration_form.cleaned_data.get('street_address2')
+            bidding_user.bidder.county = registration_form.cleaned_data.get('county')
+            bidding_user.bidder.eircode = registration_form.cleaned_data.get('eircode')
+            bidding_user.bidder.country = registration_form.cleaned_data.get('country')
+            bidding_user.save()
             
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
@@ -80,6 +91,5 @@ def registration(request):
     
 def user_profile(request):
     # The user's profile page
-    
-    user = User.objects.get(email=request.user.email)
+    user = get_object_or_404(Bidder, user__email=request.user.email)
     return render(request, 'profile.html', {"profile": user})
