@@ -18,9 +18,8 @@ form {
 }
 
 
-
 .block {
-  margin: 10 10px;
+  margin: 10em 10em;
   background-color: #eee;
 }
 
@@ -32,8 +31,8 @@ form {
 }
 
 img {
-  width: 330px;
-  height: 316px;
+  width: 330em;
+  height: 316em;
 }
 
         /*PARAGRAPH AND SPAN*/
@@ -48,7 +47,7 @@ p{
 
 p>span {
   color: black;
-  font-size: 18px;
+  font-size: 18em;
   font-weight: 400;
   text-transform: capitalize;
 }
@@ -56,7 +55,7 @@ p>span {
 span {
   font-family: 'Cormorant+Upright', serif;
   color: #1D2D44;
-  font-size: 20px;
+  font-size: 20em;
   font-weight: 600;
   text-transform: capitalize;
   
@@ -75,14 +74,14 @@ span {
 
 
 .bid-detail {
-  margin-top: 60px
+  margin-top: 60em;
 }
 
         /*MEDIA QUERIES*/
         
 @media (max-width:768px) {
    .bid-detail {
-  margin-top: 0px
+  margin-top: 0em;
 }
 }
 
@@ -91,29 +90,40 @@ span {
           
 .border{
    border-bottom:5px solid #a3c2d4;
+   
 }
+
+         /* HEADERS */
+
+h1,
+h2,
+h3 {
+  font-family: 'Nunito', serif;
+  font-weight: 600;
+  
+  
+}
+
 
 h1{
-  font-family: 'Nunito', serif;
-  font-size: 50px;
+  font-size: 50em;
   text-transform: uppercase;
-  text-align: center;
+  text-align: center; 
+  text-decoration: underline;
   color: #064789;
-  font-weight: 600;
 
 }
 
-h2 {
-  font-family: 'Nunito', serif;
-  font-weight: 600;
+.border>h2 {
+  margin-bottom: 20px;
 }
+
 
 h3 {
   color: #151617c2;
-  font-family: 'Nunito', serif;
-  font-weight: 600;
-  font-size: 32px;
+  font-size: 32em;
 }
+
 
 li {
   background-color: #2da3e7;
@@ -122,11 +132,9 @@ li {
       /*FOOTER*/
 
 
-footer {
-  background-color: #54b4eb;
-}
 
 .footer {
   text-transform: capitalize;
   text-align: center;
 }
+
