@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, redirect
 from django.utils import timezone
-import stripe # new
+import stripe
 from auctions.models import Auction
 from bids.models import Bid
 
@@ -17,7 +17,7 @@ stripe.api_key = settings.STRIPE_SECRET
             # Checkout Page
             
 class view_basket(TemplateView):
-    template_name = 'new_basket.html'
+    template_name = 'new_basket.html' 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -25,13 +25,19 @@ class view_basket(TemplateView):
         return context
         
         
-# To Charge Page
-def charge(request): # new
+            # To Charge Page
+def charge(request): 
     if request.method == 'POST':
+        
+            # bid is still going on
+            
         product_id = request.POST['bid_product']
         print(product_id)
         auction = Auction.objects.get(product_id=product_id)
         bid = Bid.objects.get(product_id=product_id)
+        
+             # Winner can pay
+             
         if timezone.now() >= auction.end_time:
             if request.user.id == bid.user_id.id:
                 if 'bid_price' in request.POST:
