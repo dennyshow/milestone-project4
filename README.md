@@ -4,64 +4,77 @@
 ## My Fourth Milestone Project
 
 Throughout this project I will be using the Technologies that I have learnt so far from Code Institue.
-This project will consist of HTML5 in Jinja format, CSS3, JQuery, JavaScript, Python/Django(Frameworks) and Sqlite.
-I will be using Travis for Test and also Deployment Technologies like Heroku and AWS3(Images)
+This project will consist of HTML5 mostly in Jinja Templates format, CSS3, JQuery, JavaScript, Python/Django(Frameworks).
+Databases used was stored and retrived in the backend via sqlite3. Also Deployment technologies like Heroku and PostgresSQL to store Heroku database were used. 
+I will also be using for AWS3 Bucket for staticfiles storages(Images e.t.c.) and Amazon IAM service for security.
 
-The site designed was an online ecommerce auction based app that can earn money for the owner.
-User can learn and know about the artefact before biding or purchasing.
-You have to be registered to place a bid.
+The site designed was an online ecommerce auction based only app that can earn money for the owner. 
+The site has a great level of authorisation and authentication and will only take bid and payment from registered user.
+User can learn more about artefacts before participating in any auctions.
 
-Registered user are allowed to either wait until auction ends or buy product directly.
-Winnner is decided when bid has closed!
+User most wait until auction ends before payment can be made on a won bid. The winnner is decided when bid has closed!
+Payment is acheived via stripe payment JS.
 
-All databases used was stored and retrived in the backend via sqlite3.
-I have decided to follow the project requirements provided in brief.
+I have decided to follow the project requirements and idea provided in brief.
+
 
 ## UX
 
-The UX for this project is easy and understandable. It is mainly an ecommerce web based application that functions perfectly. 
+The UX for this project is easy and understandable. It is mainly an ecommerce auction web based application that functions perfectly. 
 Navigations are quite easy and smooth for users. The application is intuitive to use and has information on it presented well.
-There is a search input box that allows user to narrow/navigate thier search through the application. 
-The web application allows user to create, read(view), edit(update) and make payment without any interference.
+The search box that allows user to narrow/navigate thier search through the application. This search box is only visible for registered user
+The web application allows user to create, read(view), edit(update), make payment and delete without any interference.
 
-As a user I want to be able to buy or get an expensive artefacts at an affordable price.
+    - As a user I want to be able to buy or get an expensive artefacts at an affordable price.
+    - As a user I want to have control over the app by having a user account.
+    - I also want to be able to store and access my information in a profile page.
+    - I want to bid from home and have my placed bid stored for me.
+    - I also want bid that is saved from homepage to be updated into auctions.
+    - I will then like to increase/raise my bid price/amount and let it differ from the last bid price/amount that was entered.
+    - If I win a bid I want to be able to make payment with a simple button.
+    - After payment is successful, I want to check my bids if product is still available, if not then I can place new bids.
+    
 
-The data schema used throughout the form/submit implement some of the CRUD rule perfectly. 
-The images used are are stored in a S3 Bucket to display correctly across every web platform.
-
-The colour scheme was very simple and makes the site quite clear and readable enough for users.
-Fonts sizes are also considered for good readability.
-The site also has some interactivity functions but minimal.
+The data schema used throughout the form/submit implement all of the CRUD rule perfectly. 
+The colour scheme was very simple and makes the site quite clear and readable enough for users. 
+Fonts sizes are also considered for good readability. The site has a little interactivity functions.
 This application is very easy for a user to manipulate and understand.
+The Wireframes are done with balsamiq and images are avaialble in a project folder called **wireframes**
 
 
 ## Features 
 
-* Navbar - Materialize was used for quick production of modern CSS and use of their predefinded classes.
 
-* Alert Messages - Used to inform user of interaction on the app. 
+* Navbar - Bootstrap Navbar allows user to for quickly move around the app with help of bootstrap predefined classes.
 
-* Images - Flask werkzeug was used to allow user attach image files. Images used are acquired via google.
+* Alert Messages - Allows message returned to user about a bid that has taken effect in the web app. 
 
-* Button - Was used to allow users actions on application.
+* Images - Django ImageField attribute are used to store images in models. Images are hosted on AWS3 Bucket to allow hosting on cloud servers. Images were acquired via google.
 
-* Font Awesome -  Icons was used to improve the UX for each logo when viewed by a user/visitor.
+* Button - Allows registered user to bid from home. When this button is clicked it will redirect user to auctions. Button in auctions allows user to raise/increase bid.
 
-* Forms/Search Bar - Bootstrap and Django Forms was helpful and usable in Jinja templates to allow app functions.
+* Search Box - Search makes it possible to filter search base on product name or artefact category. Search can ony be seen when user is authenticated.
 
-* Wireframing- I just did some mock ups on balsamiq of how the site generally should look and feel. and I attach this to each html as a png file.
+* Forms - Allows user to sign in and sign up. Also allows user to trigger a button actions
+
+* PayButton - Allows user to make payment when auction is over. This button appears when auction is ended
+
+* StripeJS - StripeJS payment used is to take payment from the web app from only an auction winner.
+
+* Profile - Allows user to view thier details when signed into the app.
+
 
 
 ### Possible feature to implement 
 
-* User Profile - Try to add ability for a user to view profile section
 * Reviews - Try to allow user leave a review on purchased/ bided product
-* Checkout - Allow the use of basket checkout should incase user bid more than one item.
+* Checkout - Allow the use of basket checkout should incase user intend to buy product and not participate in auction.
+* Countdown Timer - Add a countdown timer for auctions still ongoing
 
 
 ### Getting Started
 
-The website is built using **HTML5**, **CSS3**, **JavaScript and JQuery** for interactivity, **Python**, **Bootstrap** frameworks, **Django** frameworks
+The website is built using **HTML5**, **CSS3**, **JavaScript and JQuery** for interactivity, **Python**, **Bootstrap**, **Django** frameworks
 
 ### Prerequisites
 
@@ -73,17 +86,17 @@ This site is supported on all browsers. Check below for tested devices and brows
 
 ### External sites used 
 
-* [Bootstrap](https://getbootstrap.com/) - The web framework used 
+* [Bootstrap](https://getbootstrap.com/) - A web framework used 
 * [W3 Schools](https://www.w3schools.com/html/default.asp) - Help & tips 
 * [Stackoverflow](https://stackoverflow.com/) - Help & tips
-* [Django](https://www.djangoproject.com/) -Help & tips
+* [Django](https://www.djangoproject.com/) - The web framework used
 * [Fontawesome](https://favicon.io/) - Fontawesome
 * [Colors](https://coolors.co/) - Colours
-* [Stripe JS](hhttps://stripe.com/ie) - Stripe JS
+* [Stripe JS](hhttps://stripe.com/ie) - Stripe API used
 
 ### Frameworks/API used 
 
-* [Materialize 0.100.2](https://materializecss.com/)
+* [Bootstrap 3.3.7](https://getbootstrap.com/docs/3.3/getting-started/)
 * [JQuery 3.2.1](https://jquery.com/download/)
 * [Stripe](https://stripe.com/ie)
 * [Django](https://www.djangoproject.com/)
@@ -96,17 +109,22 @@ I used fonts from **@googleapis CSS 'Cormorant+Upright, Muli, Nunito'** to creat
 ## Technologies used
 
 
-* JQuery & JavaScript - Was used to allow interactivity, file attachment and buttons to function smoothly. [Jquery](https://jquery.com/)
 
-* Sqlite3 - SQLite3 was used to create database and pulled via the backend. [SQLite3](https://www.sqlite.org/)
+* HTML - Was used with a Jinja Template to display data stored in backend. [HTML]https://djangobook.com/)
 
-* Python - Was used to route and call backend database schema from MongoDB.[Python](Lecture Notes)
+* CSS3 - Was used for styling the web app. [CSS3](http://www.css3.info/)
 
-* Django - Produces very useful packages like Auth, Admin Jinja, Bootstrap Forms,  that allows application to be more functional.[Django](https://www.djangoproject.com/)
+* JQuery & JavaScript - Was used to allow payment, limit time and payment button to function smoothly. [Jquery](https://jquery.com/)
+
+* Sqlite3 - SQLite3 was used to store database and retrieve data via the backend. [SQLite3](https://www.sqlite.org/)
+
+* Python - Was used to route and call backend database schema from MongoDB. [Python](Lecture Notes)
+
+* Django - Produces very useful packages like Auth, Admin Jinja, Bootstrap Forms, Classes and Attributes that can be used to make the application more functional. [Django](https://www.djangoproject.com/)
 
 * AWS3 BUCKET - Using amazon cloud based server to store images and static files.[Amazon](https://aws.amazon.com/s3/)
 
-* AWS3 IAM - Used to manage access to our S3.[Amazon](https://aws.amazon.com/iam/)
+* AWS3 IAM - Used to manage access to our S3 storages. By providing us with ID and KEY to use.[Amazon](https://aws.amazon.com/iam/)
 
 * Heroku - Was used to deploy application to run on any every technological devices. [Heroku](https://heroku.com/)
 
@@ -118,6 +136,7 @@ I used fonts from **@googleapis CSS 'Cormorant+Upright, Muli, Nunito'** to creat
 
 * Travis - To test build of website and check if all test are passing [Travis](https://travis-ci.org/)
 
+* PostgresSQL - To allow the storage of database in sqlite before it can be used in Heroku as a database. [PostgresSQL](https://www.postgresql.org/) 
 
 
 
@@ -125,7 +144,13 @@ I used fonts from **@googleapis CSS 'Cormorant+Upright, Muli, Nunito'** to creat
 
 ### Travis Testing
 
-Was done through github repositories
+Open the Travis at **travis-ci.org** then click to **sign in with GitHub**. Once you are signed in, locate **settings** at the top right dropdown arrown.
+Once you are inside **settings**, you'll see list of all **GitHub repositories**, you then need to find **GitHub repositories** for the specific app and switch it on.
+If the repositories has been switched on, then go to top of our page, copy **markdown text** and paste at the bottom of our README.md file. 
+After this, create a **.travis.yml** file to configure our travis settings **language, python version, installer, script** into.. 
+
+Then we can **add, commit and push** all our changes to GitHub then we can now check if tests are passing or failing. 
+By default Travis is updated along when we push our commits into GitHub  
 
 + Tested on **Chrome** (Tested in DevOps on all mobile and tablet devices possible for testing.)
 + Tested on **IE**
@@ -286,15 +311,16 @@ Then we go into the **bucket policy** to allows access to the contents across al
 and inside this we will put in here some code including  arn address displayed at the top of the heading.
 Then we go into amazon **IAM** to allow identity and access management of our stored files and folder.
 In the **IAM** service, we add a new group for our application and then we set the policies to **ALL**
+Then it generates a downlaodable zip file containing **ID and KEY** for us to use for the newly added group. 
+This **ID and KEY** as to be stored in an environment variable.
 
 This then allows us to into our terminal window and install some settings
 **Boto3**
 **Django Storages**
 
-The **Django Storages** is passed into the installed apps in settings. And once everything looks fine we can **collectstatic**
+The **Django Storages** is passed into the installed apps in settings and also a **custom_storage** file is created to store credentials in environment variable.
+And once everything looks fine we can **collectstatic**
 And your folder and files should display in your ***AWS3 BUCKETS**
-
-Then we have our added images displaying on any webserve.
 
 
 
@@ -312,6 +338,7 @@ Once successful, code will be deployed into your repo and **git status** command
 
 
 
+
 ### Heroku Deployment
 
 Created a new app on **Heroku** where the app is hosted live.
@@ -323,6 +350,14 @@ Knowing the apps you need to pass deployment into then we can use **heroku git:r
 to allow Git automatically update deployment in Heroku. 
 Once this has been remotely passed . 
 To host the app unto heroku pass the IP and PORT config to match the route **__main__** config.
+
+To **allow PostgresSQL**, we have to go into our newly created app and click into **resources** inside here you can type **PostgresSQL** 
+and add as an add on, it should prompt up on your screen choose the **hobby dev free** and click on **provision**.
+Once you allow **PostgresSQL** it will generate a **DATABASE_URL** in the heroku settings.
+
+Now we need to install in production terminal **dj-database-url** and **psycopg2**
+Then we run a **migrate** to to update our new **PostgresSQL** database and since this is new in Heroku, alll data imput will be deleted.
+Which means we need to **createsuperuser** again and add our new production database is ready. So we can rebuild all our projects again.
 
 To allow git to push to heroku the command **git push heroku master** must be called for a final **push**.
 For a succefull and healthy push it is best adviced to have the **requirement.txt** and **Procfile** 
