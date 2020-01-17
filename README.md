@@ -12,7 +12,7 @@ The site designed was an online ecommerce auction based only app that can earn m
 The site has a great level of authorisation and authentication and will only take bid and payment from registered user.
 User can learn more about artefacts before participating in any auctions.
 
-User most wait until auction ends before payment can be made on a won bid. The winnner is decided when bid has closed!
+User most wait until auction ends before payment can be made on a won bid. The winner is decided when bid has closed!
 Payment is acheived via stripe payment JS.
 
 I have decided to follow the project requirements and idea provided in brief.
@@ -25,6 +25,8 @@ Navigations are quite easy and smooth for users. The application is intuitive to
 The search box that allows user to narrow/navigate thier search through the application. This search box is only visible for registered user
 The web application allows user to create, read(view), edit(update), make payment and delete without any interference.
 
+
+
     - As a user I want to be able to buy or get an expensive artefacts at an affordable price.
     - As a user I want to have control over the app by having a user account.
     - I also want to be able to store and access my information in a profile page.
@@ -34,12 +36,14 @@ The web application allows user to create, read(view), edit(update), make paymen
     - If I win a bid I want to be able to make payment with a simple button.
     - After payment is successful, I want to check my bids if product is still available, if not then I can place new bids.
     
+    
 
 The data schema used throughout the form/submit implement all of the CRUD rule perfectly. 
 The colour scheme was very simple and makes the site quite clear and readable enough for users. 
 Fonts sizes are also considered for good readability. The site has a little interactivity functions.
 This application is very easy for a user to manipulate and understand.
 The Wireframes are done with balsamiq and images are avaialble in a project folder called **wireframes**
+
 
 
 ## Features 
@@ -92,7 +96,7 @@ This site is supported on all browsers. Check below for tested devices and brows
 * [Django](https://www.djangoproject.com/) - The web framework used
 * [Fontawesome](https://favicon.io/) - Fontawesome
 * [Colors](https://coolors.co/) - Colours
-* [Stripe JS](hhttps://stripe.com/ie) - Stripe API used
+* [Stripe JS](https://stripe.com/ie) - Stripe API used
 
 ### Frameworks/API used 
 
