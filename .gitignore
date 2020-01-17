@@ -1,5 +1,4 @@
 *.sqlite3
 *.pyc
 .~c9
-_pycache_/
-env.py
+_pycache_/env.py 
