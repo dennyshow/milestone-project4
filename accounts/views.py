@@ -52,7 +52,8 @@ def login(request):
 
 
 def registration(request):
-    # Render the registration page
+    # Returns a registration page that allows user/bidder information saved 
+    # The bidders info stored here can be viewed in bidders profile
     
     if request.user.is_authenticated:
         return redirect(reverse('home'))
@@ -63,7 +64,6 @@ def registration(request):
         if registration_form.is_valid():
             bidding_user = registration_form.save()
             bidding_user.refresh_from_db() 
-            print(registration_form.cleaned_data)
             bidding_user.bidder.phone = registration_form.cleaned_data.get('phone')
             bidding_user.bidder.street_address1 = registration_form.cleaned_data.get('street_address1')
             bidding_user.bidder.street_address2 = registration_form.cleaned_data.get('street_address2')
@@ -89,7 +89,8 @@ def registration(request):
         "registration_form": registration_form})
     
     
+    
 def user_profile(request):
-    # The user's profile page
+    # The bidders profile page that shows all sign up info
     user = get_object_or_404(Bidder, user__email=request.user.email)
     return render(request, 'profile.html', {"profile": user})
