@@ -17,25 +17,22 @@ def home_view(request):
     
 def bid_from_home(request):
     # view that allows user to bid from home page if authenticated.
+    # Allow user to bid on a specifc product from the home page and saves users bid
         if request.method == "POST":
             if request.user.is_authenticated:
                 p_id = request.POST['product_id']
                 auction = Auction.objects.get(product_id=p_id)
                 if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
-                   
                     product = Product.objects.get(id=p_id)
                     product.auction_price += int(request.POST['bid'])
                     product.save()
-        
-                    messages.error(request, "Bidding is done!")
+                    messages.error(request, "You bid has been placed!")
                 else:
-                    messages.error(request, "Bidding is closed!")
-                
+                    messages.error(request, "Auction has closed!")
    
             else:
                 messages.error(request, "Please register or sign in to bid!")
-            
-        
+                return redirect(reverse('home'))
             
         return redirect(reverse('auctions'))
         
