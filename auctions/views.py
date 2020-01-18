@@ -10,13 +10,16 @@ from bids.models import Bid
 
 
 def all_auctions(request):
+    
     # Create views for all auctions.
     # Let auctions available to only registered user/bidder
+    # Else returns the unathorized user back to home 
+    
     if request.user.is_authenticated:
         auctions = Auction.objects.filter()
         return render(request, "auction.html", {"auctions": auctions})
     else:
-        messages.error(request, "You must be a registered user to view this page")
+        messages.error(request, "You must be a registered user to view auctions!")
         return redirect(reverse('home'))
         
     return render(request, "home.html")
@@ -25,9 +28,13 @@ def all_auctions(request):
     
 
 def one_auction(request):
-    # Allow user to auction a product
+    
+    # Allow user to bid on a specifc product base on the start time and end time of an auction
+    # If an auction time has ended a message is displayed to the user
+    # If an auction time has not ended user can update thier bid
+    
     if request.method == "POST":
-        if request.user.is_authenticated:
+       
             p_id = request.POST['product_id']
             auction = Auction.objects.get(product_id=p_id)
             if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
@@ -51,12 +58,9 @@ def one_auction(request):
                     new_bid.bid_time = timezone.now()
                     new_bid.bid_views += 1
                     new_bid.save()
-                messages.error(request, "Bidding is Updated!")
+                messages.error(request, "You have just raised your bid!")
             else:
-                messages.error(request, "Bidding is closed!")
-   
-        else:
-            messages.error(request, "Please register or sign in to bid!")
+                messages.error(request, "Auction has closed!")
             
     return redirect(reverse('auctions'))
         
