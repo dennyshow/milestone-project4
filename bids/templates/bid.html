@@ -4,17 +4,18 @@
 
 
 <div class="row">
-        <!-- HEADER -->
+    <!-- HEADER -->
     <h1>My Bids</h1>
 
 
-            <!-- FOR LOOP -->
-            
+    <!-- FOR LOOP -->
+
     {% for b in bid %}
     <div class='col-md-12'>
-                <!-- HEADER -->
+        <!-- HEADER -->
         <h2 class='border'> {{ b.product_id.title }}</h2>
     </div>
+        <!-- CAROUSEL -->
     <div class=" col-md-6  display panel panel-default ">
         <div class="panel-body">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -52,38 +53,33 @@
 
 
     <div class="col-md-6 bid-detail">
-
-        <div>
-
+                
             <h4>Artefact Description:</h4>
             <span> {{ b.product_id.details }} </span>
             <h4>Artefact Category:</h4>
             <span> {{ b.product_id.artefact }}</span>
-        </div>
         
-                <!-- FORM START-->
-         <form action="{% url 'charge' %}" class="form" method="post" data-name="{{end_time.0}}">
-              {% csrf_token %}
-              <input type="hidden" name="bid_price" value={{ b.product_id.auction_price }} />
-              <input type="hidden" name="bid_product" value={{ b.product_id.id }} />
-              <span> Bid Price: € {{ b.product_id.auction_price }}</span><br>
-              
-                  <!--COUNTDOWN TIMER-->
-              <p id="message_{{ forloop.counter0 }}" class="font-size" ></p>
-              <span id="timer_{{ forloop.counter0 }}"  ></span>
-                <!--COUNTDOWN TIMER END-->
-                
-                  <!-- STRIPE PAYMENT JS-->
-              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                      data-key="{{ key }}"
-                      data-description="Artefacts Collections"
-                      data-amount="{{ b.product_id.auction_price | mul:100 }}"
-                      data-locale="auto">
-              </script>
-              <div id="error"></div>
-                  <!-- STRIPE PAYMENT JS ENDS-->
+
+        <!-- FORM START-->
+        <form action="{% url 'charge' %}" class="form" method="post" data-name="{{end_time.0}}">
+            {% csrf_token %}
+            <input type="hidden" name="bid_price" value={{ b.product_id.auction_price }} />
+            <input type="hidden" name="bid_product" value={{ b.product_id.id }} />
+            <h4>Current Bid Price:</h4>
+            <span id="price-highlight"> €{{ b.product_id.auction_price }}</span>
+
+            <!--COUNTDOWN TIMER-->
+            <p id="message_{{ forloop.counter0 }}" class="font-size"></p>
+            <span id="timer_{{ forloop.counter0 }}"></span>
+            <!--COUNTDOWN TIMER END-->
+
+            <!-- STRIPE PAYMENT JS-->
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ key }}" data-description="Artefacts Collections" data-amount="{{ b.product_id.auction_price | mul:100 }}" data-locale="auto">
+            </script>
+            <div id="error"></div>
+            <!-- STRIPE PAYMENT JS ENDS-->
         </form>
-                <!-- FORM END-->
+        <!-- FORM END-->
 
     </div>
 
@@ -91,7 +87,7 @@
 
         <h3 class='border'> Description:</h3><span> {{ b.product_id.details }}</span>
         <h3 class='border'> History: </h3> <span> {{ b.product_id.history }}</span>
- 
+
     </div>
 
 
@@ -100,7 +96,7 @@
 
 
     {% endfor %}
-                <!-- FOR LOOP END -->
+    <!-- FOR LOOP END -->
 </div>
 
                 <!-- SCRIPT FOR PAYMENT BUTTON -->

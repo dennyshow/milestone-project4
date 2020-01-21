@@ -4,52 +4,53 @@
 
 
 <div class="row">
-                    <!-- HEADERS -->
-             <h1>Auctions</h1>
+                  <!-- HEADER -->
+  <h1>Auctions</h1>
              
                      <!-- FOR LOOPS IN AUCTION -->
                      
     {% for auction in auctions %}
-    <div class="col-md-6  display panel panel-default ">
+<div class="col-md-6  display panel panel-default ">
 
-        <div class="block">
+    <div class="block">
 
-            <div class="panel-body">
-                <div class="image">
-                    <img src="{{ MEDIA_URL }}{{ auction.product_id.image }}">
-                </div>
+        <div class="panel-body">
+            <div class="image">
+                <img src="{{ MEDIA_URL }}{{ auction.product_id.image }}">
+            </div>
+            
+                    <!-- PARAGRAPH & SPAN -->
 
-                <div>
-                    <p>Artefact: <span> {{ auction.product_id.title }} </span></p>
-                    <p>Description: <span> {{ auction.product_id.details }} </span></p>
-                    <p> Date Posted: <span> {{ auction.posted_date }} </span></p>
-                    <p>Last Auction Price: <span> €  {{ auction.product_id.auction_price }} </span></p>
-                    <p> Start: <span> {{ auction.start_time }} </span></p>
-                    <p> End: <span> {{ auction.end_time }} </span></p>
-                </div>
-                
-                        <!-- FORM TO ALLOW BID RAISE -->
+                <p>Artefact: <span> {{ auction.product_id.title }} </span></p>
+                <p>Description: <span> {{ auction.product_id.details }} </span></p>
+                <p> Date Posted: <span> {{ auction.posted_date }} </span></p>
+                <p>Last Bid Price: <span id="price-highlight"> €  {{ auction.product_id.auction_price }} </span></p>
+                <p> Start Time: <span> {{ auction.start_time }} </span></p>
+                <p> End Time: <span> {{ auction.end_time }} </span></p>
+            
+
+            <!-- FORM TO ALLOW BID RAISE -->
 
             <form action="{% url 'one_auction' %}" method="POST">
                 {% csrf_token %}
                 <div class="input-group">
                     <input type="hidden" name="product_id" value={{ auction.product_id.id }} />
                     <input name="Raise" type="number" min="10" max="9999" class="form-control" placeholder="Enter minimum € 10">
-                    <span class="input-group-btn"><button class="btn btn-success">Bid Now</button></span>
+                    <span class="input-group-btn"><button class="btn btn-success">Raise Bid</button></span>
                 </div>
             </form>
-            
-                    <!-- FORM END -->
 
-            </div>
-
+            <!-- FORM END -->
 
         </div>
 
 
-
-
     </div>
+
+
+
+
+</div>
     {% endfor %}
                 <!-- FOR LOOPS END -->
 </div>
