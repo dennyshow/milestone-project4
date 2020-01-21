@@ -184,6 +184,7 @@ By default Travis is updated along when we push our commits into GitHub
 
 
 
+
 |    Tested      |   Chrome      | Functions  |
 | -------------  |:-------------:|  ---------:|
 |Navbar          |    Yes        |     Yes    |
@@ -197,6 +198,9 @@ By default Travis is updated along when we push our commits into GitHub
 |Search Category |    Yes        |     Yes    |
 |Carousel        |    Yes        |  Partially |
 |CountDown Timer |    Yes        |     Yes    |
+
+
+
 
 
 
@@ -218,6 +222,9 @@ By default Travis is updated along when we push our commits into GitHub
 
 
 
+
+
+
 |    Tested      |   Android     | Functions  |
 | -------------  |:-------------:|  ---------:|
 |Navbar          |    Yes        |     Yes    |
@@ -231,6 +238,8 @@ By default Travis is updated along when we push our commits into GitHub
 |Search Category |    Yes        |     Yes    |
 |Carousel        |    Yes        |  Partially |
 |CountDown Timer |    Yes        |     Yes    |
+
+
 
 
 
@@ -254,6 +263,8 @@ By default Travis is updated along when we push our commits into GitHub
 
 
 
+
+
 |    Tested      |   IPhone      | Functions  |
 | -------------  |:-------------:|  ---------:|
 |Navbar          |    Yes        |     Yes    |
@@ -267,6 +278,8 @@ By default Travis is updated along when we push our commits into GitHub
 |Search Category |    Yes        |     Yes    |
 |Carousel        |    Yes        |  Partially |
 |CountDown Timer |    Yes        |     Yes    |
+
+
 
 
 
@@ -290,6 +303,8 @@ By default Travis is updated along when we push our commits into GitHub
 
 
 
+
+
 |    Tested      |   Opera       | Functions  |
 | -------------  |:-------------:|  ---------:|
 |Navbar          |    Yes        |     Yes    |
@@ -303,6 +318,8 @@ By default Travis is updated along when we push our commits into GitHub
 |Search Category |    Yes        |     Yes    |
 |Carousel        |    Yes        |  Partially |
 |CountDown Timer |    Yes        |     Yes    |
+
+
 
 
 
@@ -423,8 +440,8 @@ I can easily traceback my code on GitHub to changes applied and versions updates
 
 ### Content 
 The images and history used was retrieved from Google
-The logos was generated via icon8
-The data was retrived from my sqlite3
+The data was retrived from my sqlite3 for Cloud 9 AWS
+The data was retrived from my postgresql for heroku
 
 
 ### Acknowledgements
