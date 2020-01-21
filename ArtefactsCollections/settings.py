@@ -151,7 +151,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_STORAGE_BUCKET_NAME = 'denny-auctionsite'	
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")	
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")	
-print(AWS_SECRET_ACCESS_KEY)
+print(AWS_ACCESS_KEY_ID)
 
 AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'	
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME	
@@ -170,6 +170,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATICFILES_LOCATION = 'static'	
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'	
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)	
+
+print(STATICFILES_DIRS)
 
 STRIPE_PUBLISHABLE =  os.environ.get("STRIPE_PUBLISHABLE")	
 STRIPE_SECRET =  os.environ.get("STRIPE_SECRET")	
