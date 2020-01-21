@@ -31,12 +31,26 @@ img {
   display: block;
 }
 
+                /* IMAGE END */
+                
+                
+                /* PROFILE START */
 
-.display_inline{
-    display:inline-flex;
+.display_profile{
+    padding: 2em;
 }
 
-              /* IMAGE END*/ 
+.display_profile>p {
+    color: red;
+    font-size: 2em;
+}
+
+.display_profile>span {
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+              /* PROFILE END*/ 
 
 
 
@@ -202,8 +216,34 @@ span {
    
 }
 
-             /* BID SECTION END */  
+             /* BID SECTION END */ 
+             
+                /* PROFILE START */
+                
+.profile-detail {
+    margin-top: 1em;
+}
 
+.display_profile{
+    margin-bottom: .7em;
+    padding: 2em;
+    border-radius: 3em 3em 3em 3em;
+    -moz-border-radius: 3em 3em 3em 3em;
+    -webkit-border-radius: 3em 3em 3em 3em;
+    border: 4px solid #1d1d65;
+}
+
+.display_profile>p {
+    color: red;
+    font-size: 2em;
+}
+
+.display_profile>span {
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+              /* PROFILE END*/ 
 
 
              /* FOOTER SECTION */  
