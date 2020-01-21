@@ -100,10 +100,22 @@
 </div>
 
                 <!-- SCRIPT FOR PAYMENT BUTTON -->
+                
+                <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+
 <script type="text/javascript">
 
     // varible that takes the last bid date and time converts into current time.
 var temp = Date.now();
+
+    // constnt of time conversion
+
+const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
+
+
 
     // varibles that querys the end time of auction in form before allowing payment
 var time = document.querySelectorAll(".form");
@@ -114,14 +126,12 @@ var count = 0;
 
      // function that take count of the time left to pay for bid when not reached
 time.forEach(function(a){
-  var temp2=Date.parse(timeArray[count]);
-              var date2= new Date(timeArray[count]);
-               var secondtime = new Date(timeArray[count]).getTime();
-               
+               var secondtime = moment(timeArray[count]).valueOf();
+
             // if biding time is greater than current time hide button
   
   var message = document.getElementById("message_"+count)
-  if(temp>temp2){
+  if(temp>secondtime){
   message.innerHTML="Auction Is Closed!"
   }
              // if biding time is lesser than current time display button
@@ -132,18 +142,10 @@ time.forEach(function(a){
       a.querySelector("button").style.display = 'none'
     message.innerHTML="Ongoing Live Auction!"    
  x = setInterval(function(){
-     let now = new Date().getTime(),
+     let now = moment().valueOf();
           distance = secondtime - now;
-     var date = new Date(Date.now());
-     var seconds = Math.floor((date2 - (date))/1000);
-var minutes = Math.floor(seconds/60);
-var hours = Math.floor(minutes/60);
-var days = Math.floor(hours/24);
-hours = hours-(days*24);
-minutes = minutes-(days*24*60)-(hours*60);
-seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
-
-countdown.innerHTML= "Days: "+days + " hours: "+hours+" minutes: "+minutes +" seconds: "+ seconds; 
+    
+countdown.innerHTML= "Days: "+Math.floor(distance / (day)) + " hours: "+Math.floor((distance % (day)) / (hour))+" minutes: "+Math.floor((distance % (hour)) / (minute)) +" seconds: "+ Math.floor((distance % (minute)) / second); 
 if(distance <=0){
     clearInterval(x)
 countdown.innerHTML=""
