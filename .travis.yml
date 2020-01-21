@@ -5,4 +5,4 @@ install: "pip install -r requirements.txt"
 script:
     - SECRET_KEY="whatever" ./manage.py test
     
-install: travis_wait 20 mvn install
+install: "travis_retry pip install requirements.txt"
