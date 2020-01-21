@@ -12,10 +12,10 @@ The site designed was an online ecommerce auction based only app that can earn m
 The site has a great level of authorisation and authentication and will only take bid and payment from registered user.
 User can learn more about artefacts before participating in any auctions.
 
-User most wait until auction ends before payment can be made on a won bid. The winner is decided when bid has closed!
+User most wait until auction ends before payment can be made for the last bided price.
 Payment is acheived via stripe payment JS.
 
-I have decided to follow the project requirements and idea provided in brief.
+I have decided to follow the project requirements and an idea provided in brief.
 
 
 ## UX
@@ -26,17 +26,34 @@ The search box that allows user to narrow/navigate thier search through the appl
 The web application allows user to create, read(view), edit(update), make payment and delete without any interference.
 
 
+    - As a user I want to be able to bid or get an expensive artifacts at an affordable price.
+        - I will like to be able to know description and history about each piece of artifacts.
+        - I will like to see the products, images, both auction price and real price before I proceed to use.
+        
+    - As a user I want to have control over my account.
+        - I will like to see a button that will allow me sign in or register to use the application.
+        - I will want a form to be displayed to me so I can imput my details at registration.
+        - I will like the app to store and secure my details, where I can have access to it at anytime.
+        - I will like to see a link to my Profile available to me.
+        
+    - As a registered user I want to have the ability to bid from home and have my placed bid saved.
+        - I will like to see an input field and button that will allow me to place a bid.
+        - If my bid is placed I will like to be redirected to rest of the auctions.
+        - I will like to see the start and time of the bid I placed in auctions.
+        
+    - As a registered user I want the ability to raise my auction which has been saved from home.
+        - While in auctions I want to be able to see an input field and a button that allows me to raise my bid from previous
+        - I want a message to inform me if my bid has been updated, if not I should also see a message that it has ended.
+        - If the auction is still live I want to see the product in my bids which must be private to me.
+        
+    - As a registered user I want to be able to monitor my bid and make payment when auction has ended.
+        - I want to be able to see a countdown timer that let me know the time left for the auction to end.
+        - I want a button that when I click displays a page that takes my payment from me when the auction is won or ends.
+        
+    - As a user I want to able to see an acknowledgement that I made payment.
+    - I also want to confirm in my bids to check if my last bid has been removed from my list of bids.
+    - When I'm through placing a bid, I like a link that once I click it will log me out of the application easily.
 
-    - As a user I want to be able to buy or get an expensive artefacts at an affordable price.
-    - As a user I want to have control over the app by having a user account.
-    - I also want to be able to store and access my information in a profile page.
-    - I want to bid from home and have my placed bid stored for me.
-    - I also want bid that is saved from homepage to be updated into auctions.
-    - I will then like to increase/raise my bid price/amount and let it differ from the last bid price/amount that was entered.
-    - If I win a bid I want to be able to make payment with a simple button.
-    - After payment is successful, I want to check my bids if product is still available, if not then I can place new bids.
-    
-    
 
 The data schema used throughout the form/submit implement all of the CRUD rule perfectly. 
 The colour scheme was very simple and makes the site quite clear and readable enough for users. 
@@ -67,13 +84,14 @@ The Wireframes are done with balsamiq and images are avaialble in a project fold
 
 * Profile - Allows user to view thier details when signed into the app.
 
+* CountDown Timer - Allow user to see the timer displayed in ongoing auction. 
+
 
 
 ### Possible feature to implement 
 
 * Reviews - Try to allow user leave a review on purchased/ bided product
 * Checkout - Allow the use of basket checkout should incase user intend to buy product and not participate in auction.
-* Countdown Timer - Add a countdown timer for auctions still ongoing
 
 
 ### Getting Started
@@ -113,22 +131,21 @@ I used fonts from **@googleapis CSS 'Cormorant+Upright, Muli, Nunito'** to creat
 ## Technologies used
 
 
-
-* HTML - Was used with a Jinja Template to display data stored in backend. [HTML]https://djangobook.com/)
+* HTML - Was used with a Jinja Template to display data stored in backend. [HTML](https://djangobook.com/)
 
 * CSS3 - Was used for styling the web app. [CSS3](http://www.css3.info/)
 
-* JQuery & JavaScript - Was used to allow payment, limit time and payment button to function smoothly. [Jquery](https://jquery.com/)
+* JQuery & JavaScript - Was used to allow payment, showing countdown and payment button to function smoothly. [Jquery](https://jquery.com/)
 
 * Sqlite3 - SQLite3 was used to store database and retrieve data via the backend. [SQLite3](https://www.sqlite.org/)
 
-* Python - Was used to route and call backend database schema from MongoDB. [Python](Lecture Notes)
+* Python - Was used to route and retrieve backend database schema from SQLite3. [Python](Lecture Notes)
 
 * Django - Produces very useful packages like Auth, Admin Jinja, Bootstrap Forms, Classes and Attributes that can be used to make the application more functional. [Django](https://www.djangoproject.com/)
 
-* AWS3 BUCKET - Using amazon cloud based server to store images and static files.[Amazon](https://aws.amazon.com/s3/)
+* AWS3 BUCKET - Using amazon cloud based server to store images and static files. [Amazon](https://aws.amazon.com/s3/)
 
-* AWS3 IAM - Used to manage access to our S3 storages. By providing us with ID and KEY to use.[Amazon](https://aws.amazon.com/iam/)
+* AWS3 IAM - Used to manage access to our S3 storages. By providing us with ID and KEY to use. [Amazon](https://aws.amazon.com/iam/)
 
 * Heroku - Was used to deploy application to run on any every technological devices. [Heroku](https://heroku.com/)
 
@@ -136,9 +153,9 @@ I used fonts from **@googleapis CSS 'Cormorant+Upright, Muli, Nunito'** to creat
 
 * Fontawesome - Used to improve UX when viewing the top of the webpage. [Fontawesome](https://fontawesome.com/)
 
-* Bootstrap Classes - To trigger more styles and reduce CSS over-styling [Bootstrap](https://getbootstrap.com/)
+* Bootstrap Classes - To trigger more styles and reduce CSS over-styling. [Bootstrap](https://getbootstrap.com/)
 
-* Travis - To test build of website and check if all test are passing [Travis](https://travis-ci.org/)
+* Travis - To test build of website and check if all test are passing. [Travis](https://travis-ci.org/)
 
 * PostgresSQL - To allow the storage of database in sqlite before it can be used in Heroku as a database. [PostgresSQL](https://www.postgresql.org/) 
 
@@ -169,48 +186,51 @@ By default Travis is updated along when we push our commits into GitHub
 
 |    Tested      |   Chrome      | Functions  |
 | -------------  |:-------------:|  ---------:|
-| Navbar         |    Yes        |     Yes    |
-| Search         |    Yes        |     Yes    |
-| Forms          |    Yes        |     Yes    |
-| Images         |    Yes        |     Yes    |
-| BTN            |    Yes        |     Yes    |
-| Place Bid      |    Yes        |     Yes    |
-| Update Bid     |    Yes        |     Yes    |
-| Search Product |    Yes        |     Yes    |
-| Search Category|    Yes        |     Yes    |
-| Carousel       |    Yes        |  Partially |
-
+|Navbar          |    Yes        |     Yes    |
+|Search          |    Yes        |     Yes    |
+|Forms           |    Yes        |     Yes    |
+|Images          |    Yes        |     Yes    |
+|Pay BTN         |    Yes        |     Yes    |
+|Place Bid       |    Yes        |     Yes    |
+|Update Bid      |    Yes        |     Yes    |
+|Search Product  |    Yes        |     Yes    |
+|Search Category |    Yes        |     Yes    |
+|Carousel        |    Yes        |  Partially |
+|CountDown Timer |    Yes        |     Yes    |
 
 
 
 
 |    Tested      |   IE          | Functions  |
 | -------------  |:-------------:|  ---------:|
-| Navbar         |    Yes        |     Yes    |
-| Search         |    Yes        |     Yes    |
-| Forms          |    Yes        |     Yes    |
-| Images         |    Yes        |     Yes    |
-| BTN            |    Yes        |     Yes    |
-| Place Bid      |    Yes        |     Yes    |
-| Update Bid     |    Yes        |     Yes    |
-| Search Product |    Yes        |     Yes    |
-| Search Category|    Yes        |     Yes    |
-| Carousel       |    Yes        |  Partially |
+|Navbar          |    Yes        |     Yes    |
+|Search          |    Yes        |     Yes    |
+|Forms           |    Yes        |     Yes    |
+|Images          |    Yes        |     Yes    |
+|Pay BTN         |    Yes        |     Yes    |
+|Place Bid       |    Yes        |     Yes    |
+|Update Bid      |    Yes        |     Yes    |
+|Search Product  |    Yes        |     Yes    |
+|Search Category |    Yes        |     Yes    |
+|Carousel        |    Yes        |  Partially |
+|CountDown Timer |    Yes        |     Yes    |
+
 
 
 
 |    Tested      |   Android     | Functions  |
 | -------------  |:-------------:|  ---------:|
-| Navbar         |    Yes        |     Yes    |
-| Search         |    Yes        |     Yes    |
-| Forms          |    Yes        |     Yes    |
-| Images         |    Yes        |     Yes    |
-| BTN            |    Yes        |     Yes    |
-| Place Bid      |    Yes        |     Yes    |
-| Update Bid     |    Yes        |     Yes    |
-| Search Product |    Yes        |     Yes    |
-| Search Category|    Yes        |     Yes    |
-| Carousel       |    Yes        |  Partially |
+|Navbar          |    Yes        |     Yes    |
+|Search          |    Yes        |     Yes    |
+|Forms           |    Yes        |     Yes    |
+|Images          |    Yes        |     Yes    |
+|Pay BTN         |    Yes        |     Yes    |
+|Place Bid       |    Yes        |     Yes    |
+|Update Bid      |    Yes        |     Yes    |
+|Search Product  |    Yes        |     Yes    |
+|Search Category |    Yes        |     Yes    |
+|Carousel        |    Yes        |  Partially |
+|CountDown Timer |    Yes        |     Yes    |
 
 
 
@@ -218,47 +238,53 @@ By default Travis is updated along when we push our commits into GitHub
 
 |    Tested      |Samsung S7-S10 | Functions  |
 | -------------  |:-------------:|  ---------:|
-| Navbar         |    Yes        |     Yes    |
-| Search         |    Yes        |     Yes    |
-| Forms          |    Yes        |     Yes    |
-| Images         |    Yes        |     Yes    |
-| BTN            |    Yes        |     Yes    |
-| Place Bid      |    Yes        |     Yes    |
-| Update Bid     |    Yes        |     Yes    |
-| Search Product |    Yes        |     Yes    |
-| Search Category|    Yes        |     Yes    |
-| Carousel       |    Yes        |  Partially |
+|Navbar          |    Yes        |     Yes    |
+|Search          |    Yes        |     Yes    |
+|Forms           |    Yes        |     Yes    |
+|Images          |    Yes        |     Yes    |
+|Pay BTN         |    Yes        |     Yes    |
+|Place Bid       |    Yes        |     Yes    |
+|Update Bid      |    Yes        |     Yes    |
+|Search Product  |    Yes        |     Yes    |
+|Search Category |    Yes        |     Yes    |
+|Carousel        |    Yes        |  Partially |
+|CountDown Timer |    Yes        |     Yes    |
+
+
 
 
 
 |    Tested      |   IPhone      | Functions  |
 | -------------  |:-------------:|  ---------:|
-| Navbar         |    Yes        |     Yes    |
-| Search         |    Yes        |     Yes    |
-| Forms          |    Yes        |     Yes    |
-| Images         |    Yes        |     Yes    |
-| BTN            |    Yes        |     Yes    |
-| Place Bid      |    Yes        |     Yes    |
-| Update Bid     |    Yes        |     Yes    |
-| Search Product |    Yes        |     Yes    |
-| Search Category|    Yes        |     Yes    |
-| Carousel       |    Yes        |  Partially |
+|Navbar          |    Yes        |     Yes    |
+|Search          |    Yes        |     Yes    |
+|Forms           |    Yes        |     Yes    |
+|Images          |    Yes        |     Yes    |
+|Pay BTN         |    Yes        |     Yes    |
+|Place Bid       |    Yes        |     Yes    |
+|Update Bid      |    Yes        |     Yes    |
+|Search Product  |    Yes        |     Yes    |
+|Search Category |    Yes        |     Yes    |
+|Carousel        |    Yes        |  Partially |
+|CountDown Timer |    Yes        |     Yes    |
+
 
 
 
 
 |    Tested      |   Firefox      | Functions |
 | -------------  |:-------------:|  ---------:|
-| Navbar         |    Yes        |     Yes    |
-| Search         |    Yes        |     Yes    |
-| Forms          |    Yes        |     Yes    |
-| Images         |    Yes        |     Yes    |
-| BTN            |    Yes        |     Yes    |
-| Place Bid      |    Yes        |     Yes    |
-| Update Bid     |    Yes        |     Yes    |
-| Search Product |    Yes        |     Yes    |
-| Search Category|    Yes        |     Yes    |
-| Carousel       |    Yes        |  Partially |
+|Navbar          |    Yes        |     Yes    |
+|Search          |    Yes        |     Yes    |
+|Forms           |    Yes        |     Yes    |
+|Images          |    Yes        |     Yes    |
+|Pay BTN         |    Yes        |     Yes    |
+|Place Bid       |    Yes        |     Yes    |
+|Update Bid      |    Yes        |     Yes    |
+|Search Product  |    Yes        |     Yes    |
+|Search Category |    Yes        |     Yes    |
+|Carousel        |    Yes        |  Partially |
+|CountDown Timer |    Yes        |     Yes    |
 
 
 
@@ -266,32 +292,35 @@ By default Travis is updated along when we push our commits into GitHub
 
 |    Tested      |   Opera       | Functions  |
 | -------------  |:-------------:|  ---------:|
-| Navbar         |    Yes        |     Yes    |
-| Search         |    Yes        |     Yes    |
-| Forms          |    Yes        |     Yes    |
-| Images         |    Yes        |     Yes    |
-| BTN            |    Yes        |     Yes    |
-| Place Bid      |    Yes        |     Yes    |
-| Update Bid     |    Yes        |     Yes    |
-| Search Product |    Yes        |     Yes    |
-| Search Category|    Yes        |     Yes    |
-| Carousel       |    Yes        |  Partially |
+|Navbar          |    Yes        |     Yes    |
+|Search          |    Yes        |     Yes    |
+|Forms           |    Yes        |     Yes    |
+|Images          |    Yes        |     Yes    |
+|Pay BTN         |    Yes        |     Yes    |
+|Place Bid       |    Yes        |     Yes    |
+|Update Bid      |    Yes        |     Yes    |
+|Search Product  |    Yes        |     Yes    |
+|Search Category |    Yes        |     Yes    |
+|Carousel        |    Yes        |  Partially |
+|CountDown Timer |    Yes        |     Yes    |
+
 
 
 
 
 |    Tested      |   Safari      | Functions  |
 | -------------  |:-------------:|  ---------:|
-| Navbar         |    Yes        |     Yes    |
-| Search         |    Yes        |     Yes    |
-| Forms          |    Yes        |     Yes    |
-| Images         |    Yes        |     Yes    |
-| BTN            |    Yes        |     Yes    |
-| Place Bid      |    Yes        |     Yes    |
-| Update Bid     |    Yes        |     Yes    |
-| Search Product |    Yes        |     Yes    |
-| Search Category|    Yes        |     Yes    |
-| Carousel       |    Yes        |  Partially |
+|Navbar          |    Yes        |     Yes    |
+|Search          |    Yes        |     Yes    |
+|Forms           |    Yes        |     Yes    |
+|Images          |    Yes        |     Yes    |
+|Pay BTN         |    Yes        |     Yes    |
+|Place Bid       |    Yes        |     Yes    |
+|Update Bid      |    Yes        |     Yes    |
+|Search Product  |    Yes        |     Yes    |
+|Search Category |    Yes        |     Yes    |
+|Carousel        |    Yes        |  Partially |
+|CountDown Timer |    Yes        |     Yes    |
 
 
 
@@ -360,8 +389,9 @@ and add as an add on, it should prompt up on your screen choose the **hobby dev 
 Once you allow **PostgresSQL** it will generate a **DATABASE_URL** in the heroku settings.
 
 Now we need to install in production terminal **dj-database-url** and **psycopg2**
-Then we run a **migrate** to to update our new **PostgresSQL** database and since this is new in Heroku, alll data imput will be deleted.
-Which means we need to **createsuperuser** again and add our new production database is ready. So we can rebuild all our projects again.
+Then we run a **migrate** to to update our new **PostgresSQL** database and since this is new in Heroku, all data imputed will be erased.
+Which means we need to **createsuperuser** from terminal and add our contents again,
+Our new production database is ready. So we can rebuild all our projects again.
 
 To allow git to push to heroku the command **git push heroku master** must be called for a final **push**.
 For a succefull and healthy push it is best adviced to have the **requirement.txt** and **Procfile** 
