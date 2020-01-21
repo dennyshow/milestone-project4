@@ -8,16 +8,34 @@
 
 
 {% block content %}
-    <h1>My Profile</h1>
 
-<div class='display_inline'><p >First Name:</p> <span> {{ profile.user.first_name}}</span></div><br>
-<div class='display_inline'><p >Last Name:</p> <span>{{ profile.user.last_name}}</span></div><br>
-<div class='display_inline'><p >Email:</p> <span>{{ profile.user.email}}</span></div><br>
-<div class='display_inline'><p >Phone Number:</p><span>{{ profile.phone}}</span></div><br>
-<div class='display_inline'><p >Street Address 1:</p><span>{{ profile.street_address1}}</span></div><br>
-<div class='display_inline'><p >Street Address 2:</p><span>{{ profile.street_address2}}</span></div><br>
-<div class='display_inline'><p >County:</p><span>{{ profile.county}}</span></div><br>
-<div class='display_inline'><p >Eircode:</p><span>{{ profile.eircode}}</span></div><br>
-<div class='display_inline'><p >Country:</p><span>{{ profile.country}}</span></div><br>
+<div class="row">
+<div class="container">
+    <h1>My Profile</h1>
+<div class="profile-detail ">
+    <div class='display_profile col-md-6'>
+        <p>First Name:</p> <span> {{ profile.user.first_name}}</span></div>
+    <div class='display_profile col-md-6'>
+        <p>Last Name:</p> <span>{{ profile.user.last_name}}</span></div>
+    <div class='display_profile col-md-6'>
+        <p>Email:</p> <span>{{ profile.user.email}}</span></div>
+    <div class='display_profile col-md-6'>
+        <p>Phone Number:</p><span>{{ profile.phone}}</span></div>
+    <div class='display_profile col-md-6'>
+        <p>Street Address 1:</p><span>{{ profile.street_address1}}</span></div>
+    <div class='display_profile col-md-6'>
+        <p>Street Address 2:</p><span>{{ profile.street_address2}}</span></div>
+    <div class='display_profile col-md-6'>
+        <p>County:</p><span>{{ profile.county}}</span></div>
+    <div class='display_profile col-md-6'>
+        <p>Eircode:</p><span>{{ profile.eircode}}</span></div>
+    <div class='display_profile col-md-6'>
+        <p>Country:</p><span>{{ profile.country}}</span></div>
+</div>
+</div>
+</div>
+
+
+
 
 {% endblock %}
