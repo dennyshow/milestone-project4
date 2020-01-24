@@ -39,11 +39,11 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 
-                messages.success(request, "You have successfuly logged in!")
+                messages.success(request, "Welcome, You have been logged in successfuly!")
                 return redirect(reverse('home'))
                 
             else:
-                login_form.add_error(None, "Your username of password is incorrect")
+                login_form.add_error(None, "username or password is incorrect! please check that your username and password is correct")
     else:
         login_form = UserLoginForm()
     return render(request, 'login.html', {"login_form": login_form})
