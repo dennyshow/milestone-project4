@@ -27,31 +27,33 @@ The web application allows user to create, read(view), edit(update), make paymen
 
 
     - As a user I want to be able to bid or get an expensive artifacts at an affordable price.
-        - I will like to be able to know description and history about each piece of artifacts.
-        - I will like to see the products, images, both auction price and real price before I proceed to use.
+        - I will like to see an introduction about the site and what they do.
+        - I will like to see a button/link to let me find out about products.
+        - I will like to see the product image.
+        - I will like to see the real prices of each artifacts 
+        - I will like to be able to know description and history about each piece of artifacts without the need to regsiter/login.
         
     - As a user I want to have control over my account.
-        - I will like to see a button that will allow me sign in or register to use the application.
+        - I will like to see a button that will allow me sign in or register to use the application easily.
         - I will want a form to be displayed to me so I can imput my details at registration.
+        - Once I register, I'll like to be get a message that informs me of success/error
         - I will like the app to store and secure my details, where I can have access to it at anytime.
         - I will like to see a link to my Profile available to me.
         
-    - As a registered user I want to have the ability to bid from home and have my placed bid saved.
-        - I will like to see an input field and button that will allow me to place a bid.
-        - If my bid is placed I will like to be redirected to rest of the auctions.
-        - I will like to see the start and time of the bid I placed in auctions.
-        
-    - As a registered user I want the ability to raise my auction which has been saved from home.
-        - While in auctions I want to be able to see an input field and a button that allows me to raise my bid from previous
-        - I want a message to inform me if my bid has been updated, if not I should also see a message that it has ended.
-        - If the auction is still live I want to see the product in my bids which must be private to me.
+    - As a registered user I want the ability to raise my bid in ongoing auctions.
+        - In auctions, I'll like to see start and end time of auction, I also will like to the price in bold numbers.
+        - While in auctions I want to be able to see an input field and a button that allows me to raise my bid price.
+        - Once I press raise bid, I want a message to inform me that my bud has been updated, if not I should also see a message on screen.
+        - I'll like the bid I raised saved and if anyone increase bid I will see the last bid amount.
+        - If the auction is still live I want to see the product i bided in my bids which must be private to me.
         
     - As a registered user I want to be able to monitor my bid and make payment when auction has ended.
         - I want to be able to see a countdown timer that let me know the time left for the auction to end.
-        - I want a button that when I click displays a page that takes my payment from me when the auction is won or ends.
+        - I also want to see a message to inform me of the auction status.
+        - When auction has ended or won, I want a payment option to disply to me
+        - When I click the button I want it to display a page that takes my payment from me only when auction is won or ends.
         
     - As a user I want to able to see an acknowledgement that I made payment.
-    - I also want to confirm in my bids to check if my last bid has been removed from my list of bids.
     - When I'm through placing a bid, I like a link that once I click it will log me out of the application easily.
 
 
@@ -68,7 +70,9 @@ The Wireframes are done with balsamiq and images are avaialble in a project fold
 
 * Navbar - Bootstrap Navbar allows user to for quickly move around the app with help of bootstrap predefined classes.
 
-* Alert Messages - Allows message returned to user about a bid that has taken effect in the web app. 
+* Alert Messages - Allows message returned to user about a bid that has taken effect in the web app.
+
+* Animate - Allows the use of some predefined classes to increase applications UX.  
 
 * Images - Django ImageField attribute are used to store images in models. Images are hosted on AWS3 Bucket to allow hosting on cloud servers. Images were acquired via google.
 
@@ -369,8 +373,11 @@ This then allows us to into our terminal window and install some settings
 **Django Storages**
 
 The **Django Storages** is passed into the installed apps in settings and also a **custom_storage** file is created to store credentials in environment variable.
-And once everything looks fine we can **collectstatic**
+And once everything looks fine we can **run python3 manage.py collectstatic**. This will collect all the static files in our app including any changes that is made.
+**N.B** **this command has to be run in the development(local) environment each time a change is been made in the static files/folder** 
 And your folder and files should display in your ***AWS3 BUCKETS**
+
+
 
 
 
