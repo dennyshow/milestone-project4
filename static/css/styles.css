@@ -434,12 +434,25 @@ span#price-highlight {
     }
     
     p.footer {
-        padding-right:4em;
+        padding-right:0em;
     }
     
     .icon-detail {
-        padding-left:5.4em;
+        padding-left:4em;
     }
+}
+
+
+@media (max-width: 640px) {
+    .icon-detail {
+        padding-left: 4em;
+    }
+    
+     p.footer {
+        padding-right: 0em;
+    }
+    
+    
 }
 
 
@@ -524,7 +537,6 @@ p.footer {
 /********************FONTAWESOME ICONS*******************/
 
 .fa-cc-stripe,
-.fa-cc-visa,
 .fa-credit-card{
     font-size: 2.7em;
     margin-top: .3em;
@@ -536,9 +548,6 @@ p.footer {
     color: #7ca4ff;
 }
     
-.fa-cc-visa {
-    color: #ffe08b;
-}
 
 .fa-credit-card {
     color:#f6fffe;
