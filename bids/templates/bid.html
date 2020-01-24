@@ -17,7 +17,7 @@
     </div>
         <!-- CAROUSEL -->
     <div class=" col-md-6  display panel panel-default ">
-        <div class="panel-body">
+        <div class="product-panel">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -69,7 +69,7 @@
             <span id="price-highlight"> €{{ b.product_id.auction_price }}</span>
 
             <!--COUNTDOWN TIMER-->
-            <p id="message_{{ forloop.counter0 }}" class="font-size"></p>
+            <p id="message_{{ forloop.counter0 }}" class="font-size blinking"></p>
             <span id="timer_{{ forloop.counter0 }}"></span>
             <!--COUNTDOWN TIMER END-->
 
