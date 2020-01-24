@@ -177,6 +177,7 @@ After this, create a **.travis.yml** file to configure our travis settings **lan
 Then we can **add, commit and push** all our changes to GitHub then we can now check if tests are passing or failing. 
 By default Travis is updated along when we push our commits into GitHub  
 
+
 + Tested on **Chrome** (Tested in DevOps on all mobile and tablet devices possible for testing.)
 + Tested on **IE**
 + Tested on  **Android**
@@ -207,8 +208,6 @@ By default Travis is updated along when we push our commits into GitHub
 
 
 
-
-
 |    Tested      |   IE          | Functions  |
 | -------------  |:-------------:|  ---------:|
 |Navbar          |    Yes        |     Yes    |
@@ -222,8 +221,6 @@ By default Travis is updated along when we push our commits into GitHub
 |Search Category |    Yes        |     Yes    |
 |Carousel        |    Yes        |  Partially |
 |CountDown Timer |    Yes        |     Yes    |
-
-
 
 
 
@@ -246,9 +243,6 @@ By default Travis is updated along when we push our commits into GitHub
 
 
 
-
-
-
 |    Tested      |Samsung S7-S10 | Functions  |
 | -------------  |:-------------:|  ---------:|
 |Navbar          |    Yes        |     Yes    |
@@ -266,9 +260,6 @@ By default Travis is updated along when we push our commits into GitHub
 
 
 
-
-
-
 |    Tested      |   IPhone      | Functions  |
 | -------------  |:-------------:|  ---------:|
 |Navbar          |    Yes        |     Yes    |
@@ -282,8 +273,6 @@ By default Travis is updated along when we push our commits into GitHub
 |Search Category |    Yes        |     Yes    |
 |Carousel        |    Yes        |  Partially |
 |CountDown Timer |    Yes        |     Yes    |
-
-
 
 
 
@@ -307,8 +296,6 @@ By default Travis is updated along when we push our commits into GitHub
 
 
 
-
-
 |    Tested      |   Opera       | Functions  |
 | -------------  |:-------------:|  ---------:|
 |Navbar          |    Yes        |     Yes    |
@@ -322,9 +309,6 @@ By default Travis is updated along when we push our commits into GitHub
 |Search Category |    Yes        |     Yes    |
 |Carousel        |    Yes        |  Partially |
 |CountDown Timer |    Yes        |     Yes    |
-
-
-
 
 
 
