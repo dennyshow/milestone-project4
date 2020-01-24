@@ -1,60 +1,86 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block content %}
 
 
+
+
 <div class="row">
+    
     
             <!-- FOR LOOPS START -->
     
-    {% for h in home %}
-<div class=" col-md-6  display panel panel-default ">
+<div class=" col-sm-12 col-md-12  ">
+        <div class="jumbotron jumbotron img-circle animated slideInLeft">
+  <div class="container">
+    <h1 class="animated slideInLeft display-4">Welcome To Artefacts Collections</h1>
+    <p class="animated slideInLeft lead">No1 secure auction markertplace for great artifacts at an affordable price just a few clicks away!</p>
+    {% if user.is_authenticated %}
+    {% else %}
+    <a href="{% url 'registration' %}" class="btn btn-success">Register Now!</a>
+    {% endif %}
+  </div>
+</div>
 
-    <div class="block">
+  <!--<h2>Carousel Example</h2>  -->
+      <div id="myCarousel" class=" hidden-xs carousel slide" data-ride="carousel">
+      
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
 
-
-        <div class="panel-body">
-            <div class="image">
-                <img src="{{ MEDIA_URL }}{{ h.product_id.image }}">
-            </div>
-
-
-            <div>
-                <p>Artefact Name: <span>{{ h.product_id.title }}</span></p>
-                <p>Artefact Description: <span>{{ h.product_id.details }}</span></p>
-                <p>Artefact Category: <span>{{ h.product_id.artefact }}</span></p>
-                <p>Last Bid: <span id="price-highlight"> €  {{ h.product_id.auction_price }}</span></p>
-            </div>
-
-            <div class="bid-height">
-                <!-- FORMS TO ALLOW BIDDING FROM HOMEPAGE -->
-
-                <form action="{% url 'bid_from_home'  %}" method="POST">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <input type="hidden" name="product_id" value={{ h.product_id.id }} />
-                        <input name="bid" type="text" min="10" max="9999" class="form-control" placeholder="Enter amount">
-                        <span class="input-group-btn"><button class="btn btn-success">Place Bid</button></span>
-                    </div>
-                </form>
-
-                <!-- FORM END -->
-
-            </div>
-
-
-        </div>
-
+     <!--Wrapper for slides -->
+    <div class=" carousel-inner">
+      <div class="item active">
+        <img class="img-circle animated bounceInDown" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/0_Sarcophage_de_Marcus_Claudianus_-_Pal._Massimo_alle_Terme_%281%29.JPG" alt="Quotes 1" style="width:100em; height:25em">
+      </div>
+          
+       <div class="item">
+        <img class="img-circle animated bounceInDown" src="https://art-sheep.com/wp-content/uploads/2015/06/11430170_903353273054752_6329752283719815548_o.jpg" alt="Quotes 2" style="width:100em; height:25em">
+      </div>
+      
+      <div class="item">
+        <img class="img-circle animated bounceInDown" src="https://quotessayings.net/pics/online-business-quote-by-dan-butler-1659864.jpg" alt="Quotes 3" style="width:100em; height:25em">
+      </div>
+      
+      
     </div>
-
-
-
-
-</div>
-    {% endfor %}
+  </div>
     
-                <!-- FOR LOOPS END -->
 </div>
+
+
+    {% for h in home %}
+<div class="col-md-4 col-sm-4  display panel panel-default">
+    <div class="block">
+        <div class="panel-body">
+
+    
+    <div class="image">
+        <img class="" src="{{ MEDIA_URL }}{{ h.product_id.image }}">
+    </div>
+    <div class="">
+        
+        <p class="">Learn More...</p>
+        <a href="{% url 'products' %}" class="btn btn-primary">View Product</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+  
+    
+</div>
+</div>
+
+
+<script type="text/javascript" src="">
+    $('.carousel').carousel()
+</script>
 
 
 {% endblock %}
